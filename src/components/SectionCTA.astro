@@ -1,0 +1,102 @@
+---
+/**
+ * ─── SectionCTA Component ───
+ * Componente de llamada a la acción reutilizable para todo el sitio.
+ * Diseño horizontal con título, texto y botón.
+ */
+
+interface Props {
+  /** Título de la llamada a la acción */
+  title: string;
+  /** Texto descriptivo */
+  text: string;
+  /** Texto del botón */
+  buttonText: string;
+  /** URL del botón */
+  buttonHref?: string;
+  /** Variante de color: 'accent' (rojo) | 'primary' (azul) */
+  variant?: 'accent' | 'primary';
+}
+
+const {
+  title,
+  text,
+  buttonText,
+  buttonHref = '#cotizador',
+  variant = 'accent',
+} = Astro.props;
+
+const ctaClass = variant === 'primary' ? 'section-cta--primary' : '';
+---
+
+<div class={`section-cta ${ctaClass}`}>
+  <h3 class="section-cta__title">{title}</h3>
+  <p class="section-cta__text">{text}</p>
+  <a href={buttonHref} class="section-cta__btn">{buttonText}</a>
+</div>
+
+<style>
+  .section-cta {
+    background: var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl) var(--space-3xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  .section-cta--primary {
+    background: var(--color-primary);
+  }
+
+  @media (max-width: 968px) {
+    .section-cta {
+      flex-direction: column;
+      text-align: center;
+      padding: var(--space-2xl);
+    }
+  }
+
+  .section-cta__title {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .section-cta__text {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    flex: 1;
+  }
+
+  .section-cta__btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .section-cta--primary .section-cta__btn {
+    background: var(--color-accent);
+  }
+
+  .section-cta__btn:hover {
+    background: #ffffff;
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .section-cta--primary .section-cta__btn:hover {
+    color: var(--color-primary);
+  }
+</style>

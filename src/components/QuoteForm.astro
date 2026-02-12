@@ -1,0 +1,276 @@
+---
+/**
+ * ─── QuoteForm Component ───
+ * Formulario de cotización reutilizable para todo el sitio.
+ * Incluye campos para tipo de servicio, equipo, marca, ubicación y datos de contacto.
+ */
+import { SITE } from "@data/site";
+
+interface Props {
+  /** Título del formulario */
+  title?: string;
+  /** Subtítulo/descripción */
+  subtitle?: string;
+  /** ID del formulario */
+  formId?: string;
+  /** Variante de fondo: 'dark' | 'light' */
+  variant?: 'dark' | 'light';
+}
+
+const {
+  title = "Cotiza tu servicio en minutos",
+  subtitle = "Somos la primera empresa en México en ofrecerte cotización en línea. Sin compromiso.",
+  formId = "cotizador-form",
+  variant = 'dark',
+} = Astro.props;
+
+const sectionClass = variant === 'light' ? 'quote-form--light' : '';
+---
+
+<section class={`quote-form ${sectionClass}`}>
+  <div class="container">
+    <div class="quote-form__header">
+      <h2 class="quote-form__title">{title}</h2>
+      <p class="quote-form__subtitle">{subtitle}</p>
+    </div>
+
+    <form id={formId} class="quote-form__form" action="#" method="POST">
+      <div class="quote-form__grid">
+        <!-- Tipo de servicio -->
+        <div class="form-group">
+          <label for="tipo-servicio">Tipo de servicio *</label>
+          <select id="tipo-servicio" name="tipo-servicio" required>
+            <option value="">Selecciona una opción</option>
+            <option value="mantenimiento-preventivo">Mantenimiento preventivo</option>
+            <option value="mantenimiento-correctivo">Mantenimiento correctivo</option>
+            <option value="reparacion">Reparación de emergencia</option>
+            <option value="modernizacion">Modernización</option>
+            <option value="instalacion">Instalación nueva</option>
+            <option value="auditoria">Auditoría y certificación</option>
+            <option value="refacciones">Refacciones</option>
+          </select>
+        </div>
+
+        <!-- Tipo de equipo -->
+        <div class="form-group">
+          <label for="tipo-equipo">Tipo de equipo *</label>
+          <select id="tipo-equipo" name="tipo-equipo" required>
+            <option value="">Selecciona una opción</option>
+            <option value="elevador-pasajeros">Elevador de pasajeros</option>
+            <option value="escalera-electrica">Escalera eléctrica</option>
+            <option value="elevador-residencial">Elevador residencial</option>
+            <option value="montacargas">Montacargas</option>
+            <option value="plataforma-accesibilidad">Plataforma de accesibilidad</option>
+            <option value="anden-movil">Andén móvil</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <!-- Marca del equipo -->
+        <div class="form-group">
+          <label for="marca">Marca del equipo</label>
+          <select id="marca" name="marca">
+            <option value="">Selecciona una opción</option>
+            <option value="otis">Otis</option>
+            <option value="schindler">Schindler</option>
+            <option value="kone">KONE</option>
+            <option value="tk-elevator">TK Elevator</option>
+            <option value="mitsubishi">Mitsubishi</option>
+            <option value="hitachi">Hitachi</option>
+            <option value="fujitec">Fujitec</option>
+            <option value="hyundai">Hyundai</option>
+            <option value="orona">Orona</option>
+            <option value="otra">Otra marca</option>
+            <option value="no-se">No sé</option>
+          </select>
+        </div>
+
+        <!-- Número de pisos -->
+        <div class="form-group">
+          <label for="pisos">Número de pisos/paradas</label>
+          <input type="number" id="pisos" name="pisos" min="1" max="100" placeholder="Ej: 5">
+        </div>
+
+        <!-- Ubicación -->
+        <div class="form-group">
+          <label for="ubicacion">Ubicación *</label>
+          <select id="ubicacion" name="ubicacion" required>
+            <option value="">Selecciona una ciudad</option>
+            <option value="cdmx">Ciudad de México</option>
+            <option value="monterrey">Monterrey</option>
+            <option value="guadalajara">Guadalajara</option>
+            <option value="puebla">Puebla</option>
+            <option value="cancun">Cancún</option>
+            <option value="queretaro">Querétaro</option>
+            <option value="tijuana">Tijuana</option>
+            <option value="leon">León</option>
+            <option value="otra">Otra ciudad</option>
+          </select>
+        </div>
+
+        <!-- Nombre -->
+        <div class="form-group">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+        </div>
+
+        <!-- Teléfono -->
+        <div class="form-group">
+          <label for="telefono">Teléfono *</label>
+          <input type="tel" id="telefono" name="telefono" required placeholder="55 1234 5678">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" required placeholder="tu@email.com">
+        </div>
+      </div>
+
+      <div class="quote-form__submit">
+        <button type="submit" class="quote-form__button">
+          Obtener cotización gratuita
+        </button>
+        <p class="quote-form__note">
+          Respondemos en menos de 24 horas hábiles. Sin compromiso.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .quote-form {
+    background: var(--color-primary);
+    padding-block: var(--space-4xl);
+  }
+
+  .quote-form--light {
+    background: #f8f9fa;
+  }
+
+  .quote-form__header {
+    text-align: center;
+    margin-block-end: var(--space-2xl);
+  }
+
+  .quote-form__title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: #ffffff;
+    margin-block-end: var(--space-sm);
+  }
+
+  .quote-form--light .quote-form__title {
+    color: var(--color-primary);
+  }
+
+  .quote-form__subtitle {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  .quote-form--light .quote-form__subtitle {
+    color: var(--color-text-light);
+  }
+
+  .quote-form__form {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .quote-form--light .quote-form__form {
+    background: #ffffff;
+    border: 1px solid var(--color-border-light);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .quote-form__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .form-group label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .quote-form--light .form-group label {
+    color: var(--color-primary);
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: var(--space-md);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .quote-form--light .form-group input,
+  .quote-form--light .form-group select {
+    border-color: var(--color-border);
+    background: #ffffff;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+  }
+
+  .form-group input::placeholder {
+    color: var(--color-text-light);
+  }
+
+  .quote-form__submit {
+    margin-block-start: var(--space-xl);
+    text-align: center;
+  }
+
+  .quote-form__button {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #ffffff;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    padding: var(--space-lg) var(--space-3xl);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .quote-form__button:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+  }
+
+  .quote-form__note {
+    margin-block-start: var(--space-md);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .quote-form--light .quote-form__note {
+    color: var(--color-text-light);
+  }
+</style>

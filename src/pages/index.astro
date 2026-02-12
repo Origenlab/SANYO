@@ -1,0 +1,1388 @@
+---
+/**
+ * ─── Home Page: SAELES Elevadores y Escaleras ───
+ * Landing page optimizada para SEO con 11 secciones estratégicas.
+ * Diferenciadores clave: Servicio multimarca, cotizador en línea, contenido normativo.
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+import Card from "@components/Card.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+import QuoteForm from "@components/QuoteForm.astro";
+import { SITE } from "@data/site";
+
+
+// JSON-LD: LocalBusiness schema
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE.url}/#organization`,
+  name: SITE.name,
+  description: SITE.seo.description,
+  url: SITE.url,
+  logo: `${SITE.url}${SITE.organization.logo}`,
+  image: `${SITE.url}/images/og-default.jpg`,
+  telephone: SITE.contact.phone,
+  email: SITE.contact.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Ciudad de México",
+    addressCountry: "MX",
+  },
+  areaServed: SITE.areaServed.map((city) => ({
+    "@type": "City",
+    name: city,
+  })),
+  priceRange: "$$",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  sameAs: SITE.organization.sameAs,
+};
+
+// Marcas que atendemos (9 marcas para grid 3x3)
+const brands = [
+  {
+    name: "Otis",
+    logo: "/images/brands/otis.png",
+    subtitle: "N°1 Mundial en Elevadores",
+    description: "Mantenimiento especializado para la marca líder mundial. Atendemos todos los modelos: Gen2, SkyRise, GeN360. Refacciones originales y técnicos con certificación Otis."
+  },
+  {
+    name: "Schindler",
+    logo: "/images/brands/schindler.png",
+    subtitle: "Tecnología Suiza de Precisión",
+    description: "Servicio experto en sistemas Schindler 3300, 5500 y serie 7000. Diagnóstico digital avanzado, modernización de cuadros de maniobra y soporte técnico 24/7."
+  },
+  {
+    name: "KONE",
+    logo: "/images/brands/kone.png",
+    subtitle: "Innovación Finlandesa",
+    description: "Especialistas en KONE MonoSpace, EcoDisc y MiniSpace. Mantenimiento predictivo con tecnología IoT, máxima eficiencia energética y reducción de consumo hasta 70%."
+  },
+  {
+    name: "TK Elevator",
+    logo: "/images/brands/tk-elevator.png",
+    subtitle: "Ingeniería Alemana",
+    description: "Expertos en ThyssenKrupp Synergy, Evolution y endura. Actualización de sistemas de control, modernización de cabinas y cumplimiento total NOM-207."
+  },
+  {
+    name: "Mitsubishi",
+    logo: "/images/brands/mitsubishi.png",
+    subtitle: "Precisión Japonesa",
+    description: "Técnicos certificados en elevadores Mitsubishi NEXIEZ y GPS-III. Mantenimiento de alta precisión para edificios de alto tráfico, hospitales y hoteles de lujo."
+  },
+  {
+    name: "Hitachi",
+    logo: "/images/brands/hitachi.png",
+    subtitle: "Tecnología de Vanguardia",
+    description: "Servicio premium para elevadores Hitachi de alta velocidad. Especialización en edificios corporativos, rascacielos y sistemas de transporte vertical masivo."
+  },
+  {
+    name: "Fujitec",
+    logo: "/images/brands/fujitec.png",
+    subtitle: "Calidad Asiática",
+    description: "Soporte integral para sistemas Fujitec. Mantenimiento preventivo programado, reparación de emergencia y actualización de componentes con estándares internacionales."
+  },
+  {
+    name: "Hyundai",
+    logo: "/images/brands/hyundai.png",
+    subtitle: "Robustez y Confiabilidad",
+    description: "Expertos en elevadores Hyundai para proyectos residenciales y comerciales. Refacciones de importación directa, tiempos de respuesta rápidos y garantía extendida."
+  },
+  {
+    name: "Orona",
+    logo: "/images/brands/orona.png",
+    subtitle: "Excelencia Europea",
+    description: "Especialistas en la marca española líder. Mantenimiento de elevadores Orona 3G y soluciones de accesibilidad. Ideal para edificios residenciales y comerciales."
+  },
+];
+
+// Servicios principales (9 servicios para grid 3x3)
+const services = [
+  {
+    title: "Mantenimiento Preventivo",
+    subtitle: "Programas mensuales y trimestrales",
+    description: "Inspección completa, lubricación, ajustes y verificación de seguridad según NOM-207. Evita fallas costosas y prolonga la vida útil de tu equipo.",
+    href: "/servicios/mantenimiento-preventivo",
+  },
+  {
+    title: "Mantenimiento Correctivo",
+    subtitle: "Reparación de fallas y averías",
+    description: "Diagnóstico preciso y reparación de componentes dañados: motores, frenos, puertas, sistemas de control y tableros electrónicos.",
+    href: "/servicios/mantenimiento-correctivo",
+  },
+  {
+    title: "Emergencias 24/7",
+    subtitle: "Respuesta inmediata todo el año",
+    description: "Servicio de emergencia las 24 horas, los 365 días del año. Rescate de pasajeros, liberación de cabinas y reparaciones urgentes.",
+    href: "/servicios/emergencias",
+  },
+  {
+    title: "Modernización",
+    subtitle: "Actualiza tu elevador antiguo",
+    description: "Renovación completa de equipos obsoletos: nuevos sistemas de control, cabinas modernas, ahorro energético hasta 70% y cumplimiento normativo.",
+    href: "/servicios/modernizacion",
+  },
+  {
+    title: "Venta de Elevadores",
+    subtitle: "Equipos nuevos de todas las marcas",
+    description: "Elevadores de pasajeros, carga, residenciales y montacargas. Asesoría personalizada para elegir el equipo ideal según tu proyecto.",
+    href: "/servicios/venta",
+  },
+  {
+    title: "Instalación",
+    subtitle: "Montaje profesional certificado",
+    description: "Instalación de elevadores y escaleras eléctricas con ingenieros certificados. Cumplimiento total de normas NOM-207 y NOM-053.",
+    href: "/servicios/instalacion",
+  },
+  {
+    title: "Escaleras Eléctricas",
+    subtitle: "Servicio especializado",
+    description: "Mantenimiento, reparación y modernización de escaleras eléctricas y andenes móviles para centros comerciales, aeropuertos y metro.",
+    href: "/servicios/escaleras-electricas",
+  },
+  {
+    title: "Auditoría y Certificación",
+    subtitle: "Verificación NOM-207 y NOM-053",
+    description: "Inspección técnica, elaboración de dictámenes, gestión de verificación ante unidades acreditadas y obtención de certificados de cumplimiento.",
+    href: "/servicios/auditoria",
+  },
+  {
+    title: "Refacciones Originales",
+    subtitle: "Piezas de todas las marcas",
+    description: "Suministro de refacciones originales y compatibles: motores, cables, guías, botoneras, sistemas de control y componentes electrónicos.",
+    href: "/servicios/refacciones",
+  },
+];
+
+
+// Tipos de equipo
+const equipmentTypes = [
+  {
+    title: "Elevadores de Pasajeros",
+    subtitle: "Comercial y Corporativo",
+    description: "Soluciones para edificios de oficinas, hospitales, hoteles y centros comerciales. Capacidad de 6 a 21 personas, velocidades de hasta 4 m/s y tecnología de última generación para alto tráfico.",
+    href: "/equipos/elevadores-pasajeros",
+  },
+  {
+    title: "Escaleras Eléctricas",
+    subtitle: "Alto Tráfico y Transporte",
+    description: "Sistemas robustos para centros comerciales, aeropuertos, estaciones de metro y terminales de transporte. Diseñadas para operación continua 24/7 con máxima eficiencia energética.",
+    href: "/equipos/escaleras-electricas",
+  },
+  {
+    title: "Elevadores Residenciales",
+    subtitle: "Casas y Condominios",
+    description: "Soluciones compactas y elegantes para casas habitación y edificios residenciales. Accesibilidad universal, bajo consumo energético y diseños personalizados para cada espacio.",
+    href: "/equipos/elevadores-residenciales",
+  },
+  {
+    title: "Montacargas",
+    subtitle: "Carga Industrial",
+    description: "Elevadores de carga para industrias, almacenes y centros logísticos. Alta capacidad de carga, puertas reforzadas y sistemas de seguridad para operación con montacargas.",
+    href: "/equipos/montacargas",
+  },
+  {
+    title: "Plataformas de Accesibilidad",
+    subtitle: "Movilidad Reducida",
+    description: "Soluciones para personas con discapacidad y movilidad reducida. Plataformas verticales, salvaescaleras y elevadores adaptados que cumplen con normativas de accesibilidad.",
+    href: "/equipos/plataformas-accesibilidad",
+  },
+  {
+    title: "Andenes Móviles",
+    subtitle: "Pasillos Rodantes",
+    description: "Sistemas de transporte horizontal para aeropuertos, centros comerciales y grandes superficies. Conexión eficiente entre áreas con alto flujo de personas.",
+    href: "/equipos/andenes-moviles",
+  },
+];
+
+// Reseñas de clientes
+const reviews = [
+  {
+    name: "Carlos Mendoza",
+    company: "Plaza Comercial Interlomas",
+    text: "Excelente servicio de mantenimiento. Llevan 3 años atendiendo nuestros 8 elevadores y nunca hemos tenido una falla grave. Muy profesionales.",
+    rating: 5,
+  },
+  {
+    name: "María González",
+    company: "Hospital Ángeles Pedregal",
+    text: "Respuesta inmediata en emergencias. Un elevador se detuvo con pacientes y llegaron en menos de 30 minutos. Servicio de primera.",
+    rating: 5,
+  },
+  {
+    name: "Roberto Sánchez",
+    company: "Torre Reforma 222",
+    text: "Modernizaron nuestros elevadores Otis de 1995. Ahora funcionan como nuevos y el consumo de energía bajó un 60%. Totalmente recomendados.",
+    rating: 5,
+  },
+  {
+    name: "Ana Martínez",
+    company: "Hotel Presidente CDMX",
+    text: "Profesionales y puntuales. El mantenimiento preventivo mensual nos ha evitado fallas durante temporada alta. Excelente inversión.",
+    rating: 5,
+  },
+  {
+    name: "Jorge Hernández",
+    company: "Corporativo Bancomer",
+    text: "Atendieron una emergencia en domingo a las 6am. El técnico llegó rápido y resolvió el problema en una hora. Servicio excepcional.",
+    rating: 5,
+  },
+  {
+    name: "Patricia López",
+    company: "Centro Comercial Santa Fe",
+    text: "Nos ayudaron con la certificación NOM-207 de todas nuestras escaleras eléctricas. Proceso rápido y sin complicaciones.",
+    rating: 5,
+  },
+  {
+    name: "Fernando Ruiz",
+    company: "Residencial Bosques",
+    text: "Instalaron el elevador en nuestro edificio de 12 pisos. Trabajo impecable, cumplieron con los tiempos y el presupuesto.",
+    rating: 5,
+  },
+  {
+    name: "Claudia Vargas",
+    company: "Clínica del Valle",
+    text: "El mejor servicio multimarca que hemos contratado. Atienden nuestros elevadores Schindler y Mitsubishi sin problema.",
+    rating: 5,
+  },
+  {
+    name: "Ricardo Torres",
+    company: "Aeropuerto de Querétaro",
+    text: "Mantenimiento de escaleras eléctricas 24/7. Nunca hemos tenido que cerrar una escalera por falla. Muy confiables.",
+    rating: 5,
+  },
+];
+
+// Sectores
+const sectors = [
+  "Centros comerciales",
+  "Hospitales y clínicas",
+  "Hoteles y resorts",
+  "Oficinas corporativas",
+  "Aeropuertos",
+  "Estaciones de metro",
+  "Edificios residenciales",
+  "Industria y manufactura",
+  "Instituciones de gobierno",
+  "Universidades",
+  "Centros logísticos",
+  "Terminales de transporte",
+];
+
+---
+
+<PageLayout
+  title="SAELES — Venta, instalación, reparación y mantenimiento de elevadores en México"
+  description="Servicio profesional de elevadores y escaleras eléctricas en todo México. Reparación multimarca, mantenimiento NOM-207, modernización y venta. Cotiza en línea."
+  jsonLd={[localBusinessJsonLd]}
+>
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECCIÓN 1: Hero Principal (Dos columnas de contenido)
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="hero" class="hero-sanyo section">
+    <div class="container">
+      <div class="hero-sanyo__grid">
+        <!-- Columna 1: Título y eslogan -->
+        <div class="hero-sanyo__main">
+          <div class="hero-sanyo__badge">
+            <span>Servicio 24/7</span>
+            <span class="hero-badge__separator">•</span>
+            <span>Todas las marcas</span>
+            <span class="hero-badge__separator">•</span>
+            <span>Cobertura nacional</span>
+          </div>
+          <h1 class="hero-sanyo__title">
+            <span class="hero-title__line1">Venta, instalación y reparación de</span>
+            <span class="hero-title__highlight">elevadores y escaleras eléctricas</span>
+            <span class="hero-title__line3">en todo <span class="hero-title__mexico">México</span></span>
+          </h1>
+          <p class="hero-sanyo__subtitle">
+            Somos expertos en <span class="text-highlight">servicio multimarca</span>. Reparamos y damos mantenimiento a
+            <span class="text-brand">Otis</span>, <span class="text-brand">Schindler</span>, <span class="text-brand">KONE</span>,
+            <span class="text-brand">TK Elevator</span>, <span class="text-brand">Mitsubishi</span> y más.
+            <span class="text-highlight">Respuesta rápida</span> en todo el país.
+          </p>
+        </div>
+
+        <!-- Columna 2: Contenido SEO y Marketing -->
+        <div class="hero-sanyo__seo">
+          <div class="hero-sanyo__seo-content">
+            <p class="hero-sanyo__seo-text">
+              <strong>Elevadores y escaleras eléctricas</strong> son elementos fundamentales en la infraestructura moderna de edificios comerciales, residenciales e industriales. En SAELES contamos con más de <span class="text-accent-light">15 años de experiencia</span> brindando soluciones integrales de transporte vertical, desde la instalación de equipos nuevos hasta el mantenimiento preventivo y correctivo que garantiza la <span class="text-accent-light">seguridad de usuarios</span> y el cumplimiento de las normas oficiales mexicanas <span class="text-accent-light">NOM-207</span> y <span class="text-accent-light">NOM-053</span>.
+            </p>
+            <p class="hero-sanyo__seo-text">
+              <strong>Elevadores y escaleras eléctricas</strong> requieren atención especializada por técnicos certificados. Nuestro equipo de profesionales está capacitado para atender <span class="text-accent-light">todas las marcas del mercado</span>: Otis, Schindler, KONE, TK Elevator, Mitsubishi, Hitachi y muchas más. Ofrecemos cobertura en todo México con tiempos de respuesta inmediatos para emergencias las <span class="text-accent-light">24 horas del día, los 7 días de la semana</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECCIÓN 2: Marcas que atendemos (DIFERENCIADOR #1)
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="marcas" class="marcas-section" aria-labelledby="marcas-heading">
+    <div class="container">
+      <!-- Header de sección (dos columnas) -->
+      <div class="marcas-header-grid">
+        <!-- Columna 1: Título y badge -->
+        <div class="marcas-header__main">
+          <span class="marcas-badge">Servicio Multimarca</span>
+          <h2 id="marcas-heading" class="marcas-title">
+            Reparamos y damos mantenimiento a <span class="text-accent">todas las marcas</span>
+          </h2>
+        </div>
+        <!-- Columna 2: Texto SEO/Marketing -->
+        <div class="marcas-header__seo">
+          <p class="marcas-seo-text">
+            <strong>Elevadores y escaleras eléctricas de cualquier fabricante</strong> requieren técnicos especializados en cada sistema.
+            En SAELES contamos con la <span class="text-accent">única red de ingenieros certificados</span> en México capacitados para
+            dar servicio a <strong>todas las marcas del mercado</strong>: desde las europeas Otis, Schindler y KONE,
+            hasta las asiáticas Mitsubishi, Hitachi y Fujitec.
+          </p>
+          <p class="marcas-seo-text">
+            Nuestro enfoque multimarca te ofrece <span class="text-accent">independencia total</span>: no estás atado a contratos exclusivos
+            con el fabricante original. Obtén <strong>servicio profesional</strong>, <strong>refacciones compatibles</strong> y
+            <strong>tiempos de respuesta inmediatos</strong> sin importar qué elevador tengas instalado.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid 3x3 de marcas -->
+      <div class="cards-grid-3x3">
+        {brands.map((brand) => (
+          <Card
+            title={brand.name}
+            subtitle={brand.subtitle}
+            description={brand.description}
+            ctaText={`Cotizar servicio ${brand.name}`}
+            ctaHref="#cotizador"
+          />
+        ))}
+      </div>
+
+      <!-- CTA Marcas -->
+      <SectionCTA
+        title="¿Tu marca no aparece en la lista?"
+        text="Nuestro equipo de ingenieros certificados atiende más de 50 marcas de elevadores y escaleras eléctricas, incluyendo LG, Sigma, MacPuarsa, Kleemann, Wittur y cualquier otro fabricante. Diagnóstico sin costo y cotización en menos de 24 horas."
+        buttonText="Ver todos los servicios"
+        buttonHref="#servicios"
+      />
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECCIÓN 3: Servicios principales
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="servicios" class="servicios-section" aria-labelledby="servicios-heading">
+    <div class="container">
+      <!-- Header de sección (dos columnas) -->
+      <div class="servicios-header-grid">
+        <!-- Columna 1: Título y badge -->
+        <div class="servicios-header__main">
+          <span class="servicios-badge">Soluciones Integrales</span>
+          <h2 id="servicios-heading" class="servicios-title">
+            Servicios profesionales de <span class="text-accent">transporte vertical</span>
+          </h2>
+        </div>
+        <!-- Columna 2: Texto SEO/Marketing -->
+        <div class="servicios-header__seo">
+          <p class="servicios-seo-text">
+            <strong>El mantenimiento de elevadores y escaleras eléctricas</strong> es obligatorio según las normas mexicanas
+            NOM-207 y NOM-053. En SAELES ofrecemos <span class="text-accent">programas completos de servicio</span> que van desde
+            inspecciones preventivas mensuales hasta proyectos de <strong>modernización integral</strong> de equipos obsoletos,
+            garantizando la seguridad de usuarios y el cumplimiento normativo.
+          </p>
+          <p class="servicios-seo-text">
+            Nuestro equipo de <span class="text-accent">ingenieros y técnicos certificados</span> está capacitado para atender
+            cualquier necesidad: <strong>reparaciones de emergencia 24/7</strong>, instalación de equipos nuevos, auditorías
+            de seguridad y suministro de refacciones originales. Más de <strong>15 años de experiencia</strong> nos respaldan
+            como la opción más confiable en transporte vertical en México.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid 3x3 de servicios -->
+      <div class="cards-grid-3x3">
+        {services.map((service) => (
+          <Card
+            title={service.title}
+            subtitle={service.subtitle}
+            description={service.description}
+            ctaText="Conocer más"
+            ctaHref={service.href}
+          />
+        ))}
+      </div>
+
+      <!-- CTA Servicios -->
+      <SectionCTA
+        title="¿No encuentras lo que buscas?"
+        text="Contáctanos para soluciones personalizadas. Nuestro equipo técnico atiende cualquier necesidad de transporte vertical: mantenimiento especializado, proyectos de modernización, instalaciones a medida y consultoría normativa."
+        buttonText="Solicitar cotización"
+        buttonHref="#cotizador"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECCIÓN 5: Tipos de equipo
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="equipos" class="equipos-section" aria-labelledby="equipos-heading">
+    <div class="container">
+      <!-- Header de sección (dos columnas) -->
+      <div class="equipos-header-grid">
+        <div class="equipos-header__main">
+          <span class="equipos-badge">Equipos Especializados</span>
+          <h2 id="equipos-heading" class="equipos-title">
+            Soluciones para <span class="text-accent">cada necesidad</span>
+          </h2>
+        </div>
+        <div class="equipos-header__seo">
+          <p class="equipos-seo-text">
+            <strong>El transporte vertical moderno</strong> abarca mucho más que elevadores tradicionales.
+            En SAELES ofrecemos <span class="text-accent">venta, instalación y mantenimiento</span> de todo tipo de sistemas:
+            desde elevadores de pasajeros de alta velocidad hasta plataformas de accesibilidad para personas con movilidad reducida.
+          </p>
+          <p class="equipos-seo-text">
+            Trabajamos con las <span class="text-accent">mejores marcas del mercado</span> y contamos con ingenieros especializados
+            en cada tipo de equipo. Asesoría personalizada para elegir la solución ideal según las necesidades de tu proyecto.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid de equipos -->
+      <div class="cards-grid-3x3">
+        {equipmentTypes.map((equipment) => (
+          <Card
+            title={equipment.title}
+            subtitle={equipment.subtitle}
+            description={equipment.description}
+            ctaText="Ver más"
+            ctaHref={equipment.href}
+          />
+        ))}
+      </div>
+
+      <!-- CTA Equipos -->
+      <SectionCTA
+        title="¿Necesitas asesoría personalizada?"
+        text="Nuestros ingenieros te ayudan a elegir el equipo ideal para tu proyecto. Evaluamos espacio disponible, tráfico estimado, normatividad aplicable y presupuesto para ofrecerte la mejor solución."
+        buttonText="Solicitar asesoría"
+        buttonHref="#cotizador"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECCIÓN 6: Reseñas de Clientes
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="resenas" class="reviews-section">
+    <div class="container">
+      <!-- Header de sección (dos columnas) -->
+      <div class="reviews-header-grid">
+        <div class="reviews-header__main">
+          <span class="reviews-badge">Clientes Satisfechos</span>
+          <h2 class="reviews-title">Lo que dicen <span class="text-accent">nuestros clientes</span></h2>
+        </div>
+        <div class="reviews-header__seo">
+          <p class="reviews-seo-text">
+            <strong>Más de 500 empresas confían en SAELES</strong> para el mantenimiento de sus elevadores y escaleras eléctricas.
+            Nuestra <span class="text-accent">tasa de retención del 95%</span> demuestra el compromiso con la calidad y la satisfacción
+            de cada uno de nuestros clientes en todo México.
+          </p>
+          <p class="reviews-seo-text">
+            Desde <strong>centros comerciales y hospitales</strong> hasta <strong>edificios corporativos y residenciales</strong>,
+            nuestros clientes valoran la <span class="text-accent">respuesta inmediata</span>, el profesionalismo de nuestros técnicos
+            y la tranquilidad de contar con un servicio confiable las 24 horas del día.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid de reseñas -->
+      <div class="reviews-grid">
+        {reviews.map((review) => (
+          <article class="review-card">
+            <div class="review-card__stars">
+              {"★".repeat(review.rating)}
+            </div>
+            <p class="review-card__text">"{review.text}"</p>
+            <div class="review-card__author">
+              <span class="review-card__name">{review.name}</span>
+              <span class="review-card__company">{review.company}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECCIÓN 7: Cotizador en línea
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="cotizador">
+    <QuoteForm />
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECCIÓN 7: Sectores y Normatividad
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="sectores" class="sectores-normas-section">
+    <div class="container">
+      <div class="sectores-normas-grid">
+        <!-- Columna 1: Sectores -->
+        <div class="sectores-column">
+          <span class="sectores-badge">Cobertura Total</span>
+          <h2 class="sectores-title">Experiencia en todos los sectores</h2>
+          <p class="sectores-intro">
+            Más de 15 años atendiendo las necesidades de transporte vertical
+            en los sectores más exigentes de México.
+          </p>
+          <div class="sectores-list">
+            {sectors.map((sector) => (
+              <span class="sector-pill">{sector}</span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Columna 2: Normatividad -->
+        <div class="normas-column">
+          <span class="normas-badge">Cumplimiento Legal</span>
+          <h2 class="normas-title">Normatividad garantizada</h2>
+          <p class="normas-intro">
+            Todos nuestros servicios cumplen con las normas oficiales mexicanas vigentes.
+          </p>
+
+          <div class="normas-cards">
+            <div class="norma-item">
+              <span class="norma-item__code">NOM-207</span>
+              <div class="norma-item__content">
+                <strong>Elevadores de pasajeros</strong>
+                <span>Requisitos de instalación, operación y mantenimiento</span>
+              </div>
+            </div>
+            <div class="norma-item">
+              <span class="norma-item__code">NOM-053</span>
+              <div class="norma-item__content">
+                <strong>Escaleras y andenes móviles</strong>
+                <span>Especificaciones de seguridad y verificación</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="normas-features">
+            <div class="norma-feature">Mantenimiento certificado</div>
+            <div class="norma-feature">Verificación acreditada</div>
+            <div class="norma-feature">Bitácora documentada</div>
+            <div class="norma-feature">Etiquetado reglamentario</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       CTA Final
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="contacto" class="cta-final-wrapper">
+    <div class="container">
+      <SectionCTA
+        title="¿Tu elevador necesita servicio?"
+        text="Cotiza sin compromiso o llámanos ahora para atención inmediata. Diagnóstico gratuito, respuesta en menos de 24 horas y técnicos certificados disponibles en todo México."
+        buttonText="Cotizar ahora"
+        buttonHref="#cotizador"
+      />
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+  /* ════════════════════════════════════════════════════════════════════════
+     ESTILOS GLOBALES DE SECCIONES
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .section-title {
+    font-size: var(--text-3xl);
+    text-align: center;
+    margin-block-end: var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .section-title--left {
+    text-align: left;
+  }
+
+  .section-title--light {
+    color: var(--color-text-on-dark);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-lg);
+    text-align: center;
+    color: var(--color-text-light);
+    max-width: 60ch;
+    margin-inline: auto;
+    margin-block-end: var(--space-2xl);
+  }
+
+  .section-subtitle--light {
+    color: var(--color-text-on-dark);
+    opacity: 0.9;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     SECCIÓN 1: Hero (Dos columnas de contenido)
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .hero-sanyo {
+    background: var(--color-primary);
+    color: var(--color-text-on-dark);
+    padding-block: var(--space-4xl);
+  }
+
+  .hero-sanyo__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  @media (min-width: 968px) {
+    .hero-sanyo__grid {
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--space-4xl);
+    }
+  }
+
+  /* Columna principal */
+  .hero-sanyo__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Badge mejorado */
+  .hero-sanyo__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--color-accent);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    margin-block-end: var(--space-xl);
+    width: fit-content;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .hero-badge__icon {
+    font-size: 1.1em;
+  }
+
+  .hero-badge__separator {
+    opacity: 0.5;
+  }
+
+  /* Título con formato */
+  .hero-sanyo__title {
+    font-size: var(--text-4xl);
+    line-height: 1.2;
+    margin-block-end: var(--space-lg);
+    font-weight: 800;
+  }
+
+  .hero-title__line1 {
+    display: block;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.85em;
+  }
+
+  .hero-title__highlight {
+    display: block;
+    color: var(--color-accent);
+    font-weight: 800;
+  }
+
+  .hero-title__line3 {
+    display: block;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.85em;
+  }
+
+  .hero-title__mexico {
+    color: #ffffff;
+    font-weight: 800;
+    position: relative;
+  }
+
+  .hero-title__mexico::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  /* Subtítulo con highlights */
+  .hero-sanyo__subtitle {
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    margin-block-end: var(--space-xl);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .text-highlight {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .text-brand {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* Columna SEO */
+  .hero-sanyo__seo {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .hero-sanyo__seo-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .hero-sanyo__seo-text {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  .hero-sanyo__seo-text strong {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .text-accent-light {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  @media (max-width: 967px) {
+    .hero-sanyo__seo-text {
+      font-size: var(--text-xs);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-sanyo__badge {
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     SECCIÓN 2: Marcas (Diseño Premium)
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .marcas-section {
+    padding-block: var(--space-4xl);
+    background: #f8f9fa;
+  }
+
+  /* Header de dos columnas */
+  .marcas-header-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    margin-block-end: var(--space-3xl);
+    align-items: center;
+  }
+
+  @media (min-width: 968px) {
+    .marcas-header-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .marcas-header__main {
+    text-align: left;
+  }
+
+  .marcas-badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-block-end: var(--space-lg);
+  }
+
+  .marcas-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  .marcas-header__seo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .marcas-seo-text {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .marcas-seo-text strong {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  @media (max-width: 967px) {
+    .marcas-header__main {
+      text-align: center;
+    }
+  }
+
+  /* Grid 3x3 para Cards */
+  .cards-grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-block-end: var(--space-3xl);
+  }
+
+  @media (max-width: 1024px) {
+    .cards-grid-3x3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cards-grid-3x3 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     SECCIÓN 3: Servicios (Diseño Premium)
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .servicios-section {
+    padding-block: var(--space-4xl);
+    background: var(--color-bg);
+  }
+
+  /* Header de dos columnas */
+  .servicios-header-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    margin-block-end: var(--space-3xl);
+    align-items: center;
+  }
+
+  @media (min-width: 968px) {
+    .servicios-header-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .servicios-header__main {
+    text-align: left;
+  }
+
+  .servicios-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #ffffff;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-block-end: var(--space-lg);
+  }
+
+  .servicios-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .servicios-header__seo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .servicios-seo-text {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .servicios-seo-text strong {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  @media (max-width: 967px) {
+    .servicios-header__main {
+      text-align: center;
+    }
+  }
+
+
+  /* ════════════════════════════════════════════════════════════════════════
+     SECCIÓN 5: Tipos de equipo
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .equipos-section {
+    padding-block: var(--space-4xl);
+    background: #f8f9fa;
+  }
+
+  .equipos-header-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    margin-block-end: var(--space-3xl);
+    align-items: center;
+  }
+
+  @media (min-width: 968px) {
+    .equipos-header-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .equipos-header__main {
+    text-align: left;
+  }
+
+  .equipos-badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-block-end: var(--space-lg);
+  }
+
+  .equipos-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .equipos-header__seo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .equipos-seo-text {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .equipos-seo-text strong {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  @media (max-width: 967px) {
+    .equipos-header__main {
+      text-align: center;
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     SECCIÓN 7: Sectores y Normatividad
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .sectores-normas-section {
+    padding-block: var(--space-4xl);
+    background: #0f1a2e;
+  }
+
+  .sectores-normas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+    margin-block-end: var(--space-3xl);
+  }
+
+  @media (min-width: 968px) {
+    .sectores-normas-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Columna Sectores */
+  .sectores-column {
+    color: #ffffff;
+  }
+
+  .sectores-badge,
+  .normas-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #ffffff;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-block-end: var(--space-lg);
+  }
+
+  .sectores-title,
+  .normas-title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: #ffffff;
+    margin-block-end: var(--space-md);
+  }
+
+  .sectores-intro,
+  .normas-intro {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-block-end: var(--space-xl);
+  }
+
+  .sectores-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .sector-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+  }
+
+  /* Columna Normatividad */
+  .normas-column {
+    color: #ffffff;
+  }
+
+  .normas-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-block-end: var(--space-xl);
+  }
+
+  .norma-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .norma-item__code {
+    background: var(--color-accent);
+    color: #ffffff;
+    font-size: var(--text-xs);
+    font-weight: 800;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+  }
+
+  .norma-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .norma-item__content strong {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .norma-item__content span {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .normas-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  @media (max-width: 480px) {
+    .normas-features {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .norma-feature {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  .norma-feature::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    margin-right: var(--space-sm);
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     SECCIÓN 6: Reseñas de Clientes
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .reviews-section {
+    padding-block: var(--space-4xl);
+    background: var(--color-bg);
+  }
+
+  /* Header de dos columnas */
+  .reviews-header-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    margin-block-end: var(--space-3xl);
+    align-items: center;
+  }
+
+  @media (min-width: 968px) {
+    .reviews-header-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .reviews-header__main {
+    text-align: left;
+  }
+
+  .reviews-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #ffffff;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-block-end: var(--space-lg);
+  }
+
+  .reviews-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .reviews-header__seo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .reviews-seo-text {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .reviews-seo-text strong {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  @media (max-width: 967px) {
+    .reviews-header__main {
+      text-align: center;
+    }
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  @media (max-width: 1024px) {
+    .reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .review-card {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: 0 2px 12px rgba(27, 42, 74, 0.06);
+    border: 1px solid rgba(27, 42, 74, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .review-card__stars {
+    color: #fbbf24;
+    font-size: var(--text-lg);
+    letter-spacing: 2px;
+  }
+
+  .review-card__text {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.7;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .review-card__author {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-block-start: var(--space-md);
+    border-block-start: 1px solid var(--color-border-light);
+  }
+
+  .review-card__name {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .review-card__company {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     CTA Final
+     ════════════════════════════════════════════════════════════════════════ */
+
+  .cta-final-wrapper {
+    padding-block: var(--space-4xl);
+    background: #f8f9fa;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     COMPONENTES AUXILIARES
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /* Botones extendidos */
+  .btn--lg {
+    padding: 1em 2em;
+    font-size: var(--text-base);
+  }
+
+  .btn--full {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .btn--whatsapp {
+    background: #25D366;
+    color: white;
+    border-color: #25D366;
+  }
+
+  .btn--whatsapp:hover {
+    background: #128C7E;
+    border-color: #128C7E;
+  }
+
+  /* Placeholder images */
+  .placeholder-image {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: var(--text-sm);
+    border: 2px dashed rgba(255,255,255,0.2);
+  }
+
+  .placeholder-image--tall {
+    aspect-ratio: 3/4;
+    background: var(--color-bg);
+    color: var(--color-text-light);
+    border-color: var(--color-border-light);
+  }
+</style>

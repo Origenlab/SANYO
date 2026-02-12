@@ -1,0 +1,93 @@
+---
+/**
+ * ─── Dynamic Page Route ───
+ * Generates a page for each entry in the "pages" content collection.
+ * Handles: /nosotros, /servicios, /privacidad, /terminos, etc.
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: page,
+  }));
+}
+
+const page = Astro.props;
+const { Content } = await page.render();
+---
+
+<PageLayout
+  title={page.data.title}
+  description={page.data.description}
+  image={page.data.image}
+  noindex={page.data.noindex}
+>
+  <section class="page-content">
+    <div class="container container--narrow">
+      <h1 class="page-content__title">{page.data.title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-content {
+    padding-block: var(--space-4xl);
+  }
+
+  .page-content__title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-block-end: var(--space-2xl);
+  }
+
+  .prose {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+
+  .prose h2 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-block-start: var(--space-2xl);
+    margin-block-end: var(--space-md);
+  }
+
+  .prose h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-block-start: var(--space-xl);
+    margin-block-end: var(--space-sm);
+  }
+
+  .prose p {
+    margin-block-end: var(--space-md);
+  }
+
+  .prose ul, .prose ol {
+    margin-block-end: var(--space-md);
+    padding-inline-start: var(--space-xl);
+  }
+
+  .prose li {
+    margin-block-end: var(--space-sm);
+  }
+
+  .prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .prose a:hover {
+    color: var(--color-accent-hover);
+  }
+</style>
