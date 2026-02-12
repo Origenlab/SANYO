@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   // ─── Site URL (required for sitemap, canonical URLs, OG images) ───
-  site: "https://saeles.com.mx",
+  site: "https://sanyo-elevadoresyescaleras.com",
 
   // ─── Integrations ───
   integrations: [
@@ -27,7 +27,7 @@ export default defineConfig({
 
   // ─── Image Optimization ───
   image: {
-    domains: ["saeles.com.mx"],
+    domains: ["sanyo-elevadoresyescaleras.com"],
     remotePatterns: [{ protocol: "https" }],
   },
 
