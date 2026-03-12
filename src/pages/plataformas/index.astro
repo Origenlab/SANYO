@@ -1,0 +1,72 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Card from "@components/Card.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+
+const plataformas = [
+  {
+    title: "Plataforma Accesible",
+    subtitle: "Salvaescaleras y discapacitados",
+    description: "Plataformas verticales y salvaescaleras para personas con discapacidad y movilidad reducida. Cumplimiento NOM-247-SSA1. Instalación en escaleras existentes sin obra mayor.",
+    href: "/plataformas/plataforma-discapacitados",
+  },
+  {
+    title: "Plataforma Industrial",
+    subtitle: "Carga hasta 5,000 kg",
+    description: "Plataformas elevadoras industriales para carga pesada en fábricas, almacenes y centros de distribución. Alta capacidad, estructura robusta y operación continua.",
+    href: "/plataformas/plataforma-carga",
+  },
+];
+---
+
+<PageLayout
+  title="Plataformas Elevadoras — Accesibilidad e Industrial CDMX | Sanyo"
+  description="Plataformas elevadoras para accesibilidad y uso industrial en CDMX. Salvaescaleras, plataformas verticales y elevadores de carga. NOM-247-SSA1. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-badge">Plataformas elevadoras</span>
+      <h1 class="page-hero__title">Plataformas elevadoras para <span class="text-accent">accesibilidad e industria</span></h1>
+      <p class="page-hero__subtitle">
+        Soluciones de elevación compactas para espacios donde un elevador convencional no es viable. 
+        Desde plataformas salvaescaleras hasta elevadores industriales de gran tonelaje.
+      </p>
+      <a href="/cotizar" class="btn-primary">Cotizar plataforma →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cards-grid">
+        {plataformas.map(p => (
+          <Card title={p.title} subtitle={p.subtitle} description={p.description} ctaText="Ver detalles" ctaHref={p.href} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionCTA
+        title="¿Necesitas una solución de elevación personalizada?"
+        text="Las plataformas son ideales cuando no hay espacio para un elevador convencional. Nuestros ingenieros evalúan tu caso y proponen la solución más adecuada."
+        buttonText="Asesoría técnica →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .text-accent { color: var(--color-accent); }
+  .btn-primary { display: inline-block; background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 900px; margin-inline: auto; }
+  @media(max-width: 640px) { .cards-grid { grid-template-columns: 1fr; } }
+</style>

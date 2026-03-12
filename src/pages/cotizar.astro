@@ -1,0 +1,424 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import { SITE } from "@data/site";
+---
+
+<PageLayout
+  title="Cotizar elevador o escalera eléctrica — Sanyo CDMX"
+  description="Solicita tu cotización gratuita para instalación, mantenimiento o modernización de elevadores y escaleras eléctricas en CDMX. Respuesta en menos de 24 horas."
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="page-badge">Cotización gratuita</span>
+          <h1 class="page-hero__title">Cotiza tu <span class="text-accent">elevador o escalera</span> sin costo</h1>
+          <p class="page-hero__subtitle">
+            Completa el formulario y recibe una propuesta personalizada en menos de 24 horas. 
+            Sin compromiso. Asesoría técnica incluida.
+          </p>
+          <ul class="hero-benefits">
+            <li>✅ Cotización sin costo ni compromiso</li>
+            <li>✅ Respuesta en menos de 24 horas hábiles</li>
+            <li>✅ Ingenieros certificados te asesoran</li>
+            <li>✅ Precios competitivos, calidad garantizada</li>
+          </ul>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-card">
+            <div class="trust-card__number">2,500+</div>
+            <div class="trust-card__label">Proyectos completados</div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-card__number">32</div>
+            <div class="trust-card__label">Estados con cobertura</div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-card__number">24h</div>
+            <div class="trust-card__label">Tiempo de respuesta</div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-card__number">20+</div>
+            <div class="trust-card__label">Años de experiencia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario principal -->
+  <section class="section">
+    <div class="container">
+      <div class="cotizar-grid">
+        <!-- Formulario -->
+        <div class="form-wrapper">
+          <h2 class="form-title">Datos del proyecto</h2>
+          <form class="cotizar-form" action="#" method="POST">
+
+            <!-- Tipo de proyecto -->
+            <div class="form-section">
+              <h3 class="form-section__title">1. ¿Qué necesitas?</h3>
+              <div class="form-group">
+                <label for="tipo-servicio">Tipo de servicio *</label>
+                <select id="tipo-servicio" name="tipo-servicio" required>
+                  <option value="">Selecciona una opción</option>
+                  <option value="instalacion-nueva">Instalación de equipo nuevo</option>
+                  <option value="mantenimiento-preventivo">Contrato de mantenimiento preventivo</option>
+                  <option value="mantenimiento-correctivo">Reparación / Mantenimiento correctivo</option>
+                  <option value="modernizacion">Modernización de equipo existente</option>
+                  <option value="certificacion">Certificación NOM-147-SCFI</option>
+                  <option value="emergencia">Emergencia — equipo detenido</option>
+                  <option value="consulta">Consulta técnica</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Tipo de equipo -->
+            <div class="form-section">
+              <h3 class="form-section__title">2. Tipo de equipo</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="tipo-equipo">Tipo de equipo *</label>
+                  <select id="tipo-equipo" name="tipo-equipo" required>
+                    <option value="">Selecciona</option>
+                    <option value="elevador-pasajeros">Elevador de pasajeros</option>
+                    <option value="elevador-carga">Elevador de carga / Montacargas</option>
+                    <option value="elevador-hidraulico">Elevador hidráulico</option>
+                    <option value="elevador-mrl">Elevador MRL (sin cuarto de máquinas)</option>
+                    <option value="elevador-panoramico">Elevador panorámico</option>
+                    <option value="elevador-residencial">Elevador residencial</option>
+                    <option value="escalera-electrica">Escalera eléctrica</option>
+                    <option value="plataforma-discapacitados">Plataforma para discapacitados</option>
+                    <option value="plataforma-carga">Plataforma industrial de carga</option>
+                    <option value="no-se">No sé / Necesito asesoría</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="marca">Marca del equipo</label>
+                  <select id="marca" name="marca">
+                    <option value="">Selecciona o escribe</option>
+                    <option value="mitsubishi">Mitsubishi Electric</option>
+                    <option value="thyssen">ThyssenKrupp</option>
+                    <option value="kone">Kone</option>
+                    <option value="otis">Otis</option>
+                    <option value="schindler">Schindler</option>
+                    <option value="otra">Otra marca</option>
+                    <option value="no-se">No sé / Equipo sin marca visible</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detalles técnicos -->
+            <div class="form-section">
+              <h3 class="form-section__title">3. Detalles técnicos</h3>
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label for="num-pisos">Número de pisos / paradas</label>
+                  <input type="number" id="num-pisos" name="num-pisos" min="2" max="100" placeholder="Ej: 8">
+                </div>
+                <div class="form-group">
+                  <label for="capacidad">Capacidad (personas/kg)</label>
+                  <input type="text" id="capacidad" name="capacidad" placeholder="Ej: 8 personas o 1000kg">
+                </div>
+                <div class="form-group">
+                  <label for="antiguedad">Antigüedad del equipo</label>
+                  <select id="antiguedad" name="antiguedad">
+                    <option value="">Selecciona</option>
+                    <option value="nuevo">Instalación nueva</option>
+                    <option value="0-5">0–5 años</option>
+                    <option value="5-15">5–15 años</option>
+                    <option value="15-plus">Más de 15 años</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="descripcion">Descripción del problema o proyecto</label>
+                <textarea id="descripcion" name="descripcion" rows="4"
+                  placeholder="Ej: El elevador se detiene entre pisos, necesito mantenimiento de 3 elevadores Otis en edificio de 12 pisos..."></textarea>
+              </div>
+            </div>
+
+            <!-- Ubicación -->
+            <div class="form-section">
+              <h3 class="form-section__title">4. Ubicación del equipo</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="estado">Estado *</label>
+                  <select id="estado" name="estado" required>
+                    <option value="">Selecciona</option>
+                    <option value="cdmx">Ciudad de México</option>
+                    <option value="edomex">Estado de México</option>
+                    <option value="queretaro">Querétaro</option>
+                    <option value="jalisco">Jalisco</option>
+                    <option value="nuevo-leon">Nuevo León</option>
+                    <option value="puebla">Puebla</option>
+                    <option value="otro">Otro estado</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="alcaldia">Alcaldía / Municipio *</label>
+                  <input type="text" id="alcaldia" name="alcaldia" required placeholder="Ej: Benito Juárez, Naucalpan...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Datos de contacto -->
+            <div class="form-section">
+              <h3 class="form-section__title">5. Tus datos de contacto</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombre">Nombre completo *</label>
+                  <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                  <label for="puesto">Cargo / Puesto</label>
+                  <input type="text" id="puesto" name="puesto" placeholder="Ej: Gerente de Instalaciones">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="empresa">Empresa / Inmueble</label>
+                  <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o edificio">
+                </div>
+                <div class="form-group">
+                  <label for="telefono">Teléfono *</label>
+                  <input type="tel" id="telefono" name="telefono" required placeholder="55 1234 5678">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico *</label>
+                <input type="email" id="email" name="email" required placeholder="tu@empresa.com">
+              </div>
+              <div class="form-group">
+                <label for="urgencia">¿Qué tan urgente es?</label>
+                <select id="urgencia" name="urgencia">
+                  <option value="">Selecciona</option>
+                  <option value="emergencia">Emergencia — Necesito atención hoy</option>
+                  <option value="urgente">Urgente — Esta semana</option>
+                  <option value="normal">Normal — Este mes</option>
+                  <option value="planeacion">En planeación — Proyecto futuro</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              Solicitar cotización gratuita →
+            </button>
+            <p class="form-note">
+              Al enviar este formulario aceptas nuestro <a href="/privacidad">aviso de privacidad</a>.
+              También puedes escribirnos por <a href={`https://wa.me/${SITE.contact.whatsapp}`} target="_blank">WhatsApp</a>.
+            </p>
+          </form>
+        </div>
+
+        <!-- Sidebar informativo -->
+        <aside class="cotizar-aside">
+          <div class="aside-card">
+            <h3>¿Qué incluye la cotización?</h3>
+            <ul class="aside-list">
+              <li>Diagnóstico técnico sin costo</li>
+              <li>Propuesta detallada por escrito</li>
+              <li>Tiempos de ejecución estimados</li>
+              <li>Garantías del servicio</li>
+              <li>Cumplimiento normativo incluido</li>
+            </ul>
+          </div>
+          <div class="aside-card aside-card--accent">
+            <h3>¿Emergencia?</h3>
+            <p>Si tu equipo está detenido ahora mismo, llámanos directamente.</p>
+            <a href={`tel:${SITE.contact.phoneRaw}`} class="aside-btn aside-btn--phone">
+              📞 Llamar ahora
+            </a>
+            <a href={`https://wa.me/${SITE.contact.whatsapp}?text=EMERGENCIA: mi elevador está detenido`}
+               target="_blank" class="aside-btn aside-btn--wa">
+              💬 WhatsApp urgente
+            </a>
+          </div>
+          <div class="aside-card">
+            <h3>Normas que cumplimos</h3>
+            <div class="norm-chip">NOM-147-SCFI — Elevadores</div>
+            <div class="norm-chip">NOM-247-SSA1 — Accesibilidad</div>
+            <div class="norm-chip">NOM-004-STPS — Seguridad</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero {
+    background: var(--color-primary);
+    color: #fff;
+    padding-block: var(--space-4xl);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+  @media(max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
+  .page-hero__title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-block: var(--space-lg);
+    color: #fff;
+  }
+  .page-hero__subtitle {
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,.85);
+    line-height: 1.7;
+    margin-block-end: var(--space-xl);
+  }
+  .page-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+  }
+  .text-accent { color: var(--color-accent); }
+  .hero-benefits { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .hero-benefits li { font-size: var(--text-base); color: rgba(255,255,255,.9); }
+  .hero-trust {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+  .trust-card {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+  .trust-card__number {
+    display: block;
+    font-size: var(--text-3xl);
+    font-weight: 900;
+    color: var(--color-accent);
+  }
+  .trust-card__label { font-size: var(--text-sm); color: rgba(255,255,255,.85); }
+  .section { padding-block: var(--space-4xl); }
+  .cotizar-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+  @media(max-width: 1024px) { .cotizar-grid { grid-template-columns: 1fr; } }
+  .form-wrapper {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-lg);
+  }
+  .form-title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-block-end: var(--space-xl);
+  }
+  .cotizar-form { display: flex; flex-direction: column; gap: var(--space-md); }
+  .form-section {
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+  .form-section__title {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-block-end: var(--space-lg);
+    padding-block-end: var(--space-md);
+    border-block-end: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+  .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-lg); }
+  @media(max-width: 640px) {
+    .form-row, .form-row-3 { grid-template-columns: 1fr; }
+  }
+  .form-group { display: flex; flex-direction: column; gap: var(--space-xs); }
+  .form-group label { font-size: var(--text-sm); font-weight: 600; color: var(--color-primary); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: var(--space-md);
+    border: 2px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    color: var(--color-text);
+    transition: border-color var(--transition-fast);
+    font-family: var(--font-sans);
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(230,57,70,.12);
+  }
+  .submit-btn {
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    padding: var(--space-lg) var(--space-2xl);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    width: 100%;
+  }
+  .submit-btn:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+  .form-note { font-size: var(--text-xs); color: var(--color-text-light); }
+  .form-note a { color: var(--color-accent); }
+  .cotizar-aside { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .aside-card {
+    background: #fff;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+  }
+  .aside-card--accent { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+  .aside-card h3 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-block-end: var(--space-md);
+  }
+  .aside-card--accent h3 { color: #fff; }
+  .aside-card--accent p { font-size: var(--text-sm); color: rgba(255,255,255,.85); margin-block-end: var(--space-lg); }
+  .aside-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .aside-list li { font-size: var(--text-sm); color: var(--color-text); }
+  .aside-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+  .aside-btn {
+    display: block;
+    text-align: center;
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+    margin-block-end: var(--space-sm);
+  }
+  .aside-btn--phone { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+  .aside-btn--wa { background: #25D366; color: #fff; }
+  .norm-chip {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    margin-block-end: var(--space-sm);
+    margin-inline-end: var(--space-xs);
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+import QuoteForm from "@components/QuoteForm.astro";
+---
+
+<PageLayout
+  title="Elevadores de Pasajeros — Instalación y Mantenimiento CDMX | Sanyo"
+  description="Elevadores de pasajeros para edificios comerciales, corporativos y residenciales. Capacidad 4-20 personas. Marcas Mitsubishi, Kone, Otis. Instalación en CDMX y toda la República."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/elevadores/">Elevadores</a> › Pasajeros</div>
+      <span class="page-badge">Elevadores de pasajeros</span>
+      <h1 class="page-hero__title">Elevadores de pasajeros para <span class="text-accent">edificios comerciales y corporativos</span></h1>
+      <p class="page-hero__subtitle">
+        Instalamos elevadores de pasajeros de las mejores marcas del mundo en CDMX y toda la República. 
+        Capacidad de 4 a 20 personas (320 kg a 1,600 kg), velocidades de 0.63 a 4 m/s y tecnología de última generación.
+      </p>
+      <div class="hero-ctas">
+        <a href="/cotizar" class="btn-primary">Cotizar instalación →</a>
+        <a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title-left">¿Qué es un elevador de <span class="text-accent">pasajeros</span>?</h2>
+          <p class="body-text">
+            Los <strong>elevadores de pasajeros</strong> son equipos de transporte vertical diseñados específicamente 
+            para el traslado seguro y eficiente de personas en edificios de múltiples pisos. Son el tipo más común 
+            de elevador en México y se instalan en edificios de oficinas, hoteles, hospitales, centros comerciales 
+            y conjuntos residenciales.
+          </p>
+          <p class="body-text">
+            En Sanyo Elevadores ofrecemos instalación de elevadores de pasajeros de las marcas más reconocidas: 
+            <strong>Mitsubishi Electric, ThyssenKrupp, Kone, Otis y Schindler</strong>. Cada instalación incluye 
+            cumplimiento total de la <strong>NOM-147-SCFI</strong> y garantía del fabricante.
+          </p>
+          <h3 class="subsection-title">Capacidades y especificaciones</h3>
+          <div class="specs-grid">
+            <div class="spec-item"><strong>Capacidad:</strong> 4 a 20 personas (320 – 1,600 kg)</div>
+            <div class="spec-item"><strong>Velocidad:</strong> 0.63, 1.0, 1.6, 2.5 o 4.0 m/s</div>
+            <div class="spec-item"><strong>Pisos:</strong> 2 hasta 40+ paradas</div>
+            <div class="spec-item"><strong>Puertas:</strong> Automáticas, corredizas de 1 o 2 hojas</div>
+            <div class="spec-item"><strong>Cabina:</strong> Acero inoxidable, cristal o acabados premium</div>
+            <div class="spec-item"><strong>Sistema:</strong> Hidráulico o eléctrico MRL</div>
+          </div>
+        </div>
+        <div class="info-sidebar">
+          <div class="info-card">
+            <h3>Sectores que atendemos</h3>
+            <ul class="check-list">
+              <li>Edificios de oficinas</li>
+              <li>Hoteles y hospitales</li>
+              <li>Centros comerciales</li>
+              <li>Edificios residenciales</li>
+              <li>Universidades y escuelas</li>
+              <li>Instalaciones de gobierno</li>
+            </ul>
+          </div>
+          <div class="info-card info-card--accent">
+            <h3>Norma obligatoria</h3>
+            <p>Todos nuestros elevadores cumplen con la <strong>NOM-147-SCFI</strong>, norma oficial mexicana para instalación y mantenimiento de elevadores de pasajeros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title-centered">Marcas que <span class="text-accent">instalamos</span></h2>
+      <div class="brands-grid">
+        {[
+          { name: "Mitsubishi Electric", desc: "Precisión japonesa. Modelos NEXIEZ para alto tráfico." },
+          { name: "ThyssenKrupp", desc: "Ingeniería alemana. Serie Synergy y Evolution." },
+          { name: "Kone", desc: "Tecnología finlandesa. EcoDisc y MonoSpace MRL." },
+          { name: "Otis", desc: "Líderes mundiales. Gen2 y GeN360." },
+          { name: "Schindler", desc: "Calidad suiza. Serie 3300, 5500 y 7000." },
+        ].map(b => (
+          <div class="brand-card">
+            <h4>{b.name}</h4>
+            <p>{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionCTA
+        title="¿Cuánto cuesta un elevador de pasajeros?"
+        text="El costo varía según capacidad, número de pisos, marca y acabados. Solicita tu cotización gratuita y nuestros ingenieros te enviarán una propuesta detallada en menos de 24 horas."
+        buttonText="Cotizar gratis →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+  <div id="cotizador">
+    <QuoteForm title="Cotiza tu elevador de pasajeros" subtitle="Somos expertos en instalación de elevadores de pasajeros en México. Cotización gratuita." />
+  </div>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .breadcrumb { font-size: var(--text-sm); color: rgba(255,255,255,.7); margin-block-end: var(--space-lg); }
+  .breadcrumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--color-accent); }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; max-width: 20ch; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .text-accent { color: var(--color-accent); }
+  .hero-ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .btn-primary { background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .btn-secondary { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); border: 1px solid rgba(255,255,255,.3); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-4xl); align-items: start; }
+  @media(max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .section-title-left { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); line-height: 1.2; margin-block-end: var(--space-xl); }
+  .body-text { font-size: var(--text-base); color: var(--color-text); line-height: 1.8; margin-block-end: var(--space-md); }
+  .subsection-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); margin-block: var(--space-xl) var(--space-lg); }
+  .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .spec-item { background: #f8f9fa; padding: var(--space-md); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-text); border-left: 3px solid var(--color-accent); }
+  .spec-item strong { color: var(--color-primary); }
+  .info-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .info-card { background: #f8f9fa; border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .info-card--accent { background: var(--color-primary); color: #fff; }
+  .info-card h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-md); }
+  .info-card--accent h3 { color: var(--color-accent); }
+  .info-card--accent p { font-size: var(--text-sm); color: rgba(255,255,255,.9); line-height: 1.7; }
+  .info-card--accent strong { color: #fff; }
+  .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .check-list li { font-size: var(--text-sm); color: var(--color-text); }
+  .check-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+  .section-title-centered { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); text-align: center; margin-block-end: var(--space-3xl); }
+  .brands-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-lg); }
+  @media(max-width: 900px) { .brands-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media(max-width: 560px) { .brands-grid { grid-template-columns: 1fr; } }
+  .brand-card { background: #fff; border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); padding: var(--space-lg); text-align: center; }
+  .brand-card h4 { font-size: var(--text-sm); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-sm); }
+  .brand-card p { font-size: var(--text-xs); color: var(--color-text-light); line-height: 1.6; }
+</style>

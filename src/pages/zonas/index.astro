@@ -1,0 +1,18 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import { SITE } from "@data/site";
+---
+<PageLayout title="Zonas de Servicio — Elevadores CDMX y República | Sanyo" description="Sanyo instala y da mantenimiento a elevadores y escaleras eléctricas en CDMX, Estado de México, Querétaro, Guadalajara, Monterrey y toda la República.">
+  <section class="page-hero"><div class="container">
+    <h1 class="page-hero__title">Cobertura nacional de <span class="text-accent">elevadores y escaleras</span></h1>
+    <p class="page-hero__subtitle">Sanyo opera en los 32 estados de México. Instalación, mantenimiento y modernización de elevadores con ingenieros en sitio en CDMX, Estado de México, Querétaro, Guadalajara y Monterrey.</p>
+    <div class="hero-ctas"><a href="/cotizar" class="btn-primary">Cotizar en tu zona →</a><a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a></div>
+  </div></section>
+  <section class="section"><div class="container">
+    <div class="cards-grid">
+      {[["CDMX", "/zonas/cdmx", "32 alcaldías, respuesta en 4 horas"],["Estado de México","/zonas/estado-de-mexico","Naucalpan, Tlalnepantla, Ecatepec, Toluca"],["Querétaro","/zonas/queretaro","Santiago de Querétaro y zona metropolitana"],["Guadalajara","/zonas/guadalajara","ZMG: Zapopan, Tlaquepaque, Tonalá"],["Monterrey","/zonas/monterrey","San Nicolás, San Pedro, Apodaca"],["Puebla","/zonas/puebla","Capital y zona conurbada"]].map(([name, href, desc]) => (
+        <a href={href} class="card"><h3>{name}</h3><p>{desc}</p><span class="card-arrow">Ver cobertura →</span></a>
+      ))}
+    </div>
+  </div></section>
+</PageLayout>

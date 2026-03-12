@@ -1,0 +1,124 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+import QuoteForm from "@components/QuoteForm.astro";
+---
+<PageLayout
+  title="Escaleras Eléctricas Industriales — Bodegas y Almacenes CDMX | Sanyo"
+  description="Escaleras eléctricas industriales para bodegas, almacenes y plantas de manufactura en CDMX. Alta resistencia, bandas antideslizantes. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/escaleras-electricas/">Escaleras</a> › Industrial</div>
+      <span class="page-badge">Escalera industrial</span>
+      <h1 class="page-hero__title">Escaleras eléctricas <span class="text-accent">industriales</span></h1>
+      <p class="page-hero__subtitle">
+        Diseñadas para las condiciones más exigentes: fábricas, bodegas, almacenes y centros de distribución. 
+        Estructura reforzada, alta resistencia al desgaste y certificación para entornos industriales.
+      </p>
+      <div class="hero-ctas">
+        <a href="/cotizar" class="btn-primary">Cotizar escalera industrial →</a>
+        <a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title-left">Escaleras para <span class="text-accent">entornos industriales</span></h2>
+          <p class="body-text">
+            Las escaleras eléctricas industriales difieren de los modelos comerciales en su <strong>construcción 
+            más robusta</strong>: acero estructural galvanizado, pasos con bandas de alta dureza, sistemas de 
+            filtración de polvo y motores de mayor potencia para operación continua en condiciones adversas.
+          </p>
+          <h3 class="subsection-title">Especificaciones industriales</h3>
+          <div class="specs-grid">
+            <div class="spec-item"><strong>Ancho:</strong> 800 o 1,000 mm</div>
+            <div class="spec-item"><strong>Velocidad:</strong> 0.5 m/s (ajustable)</div>
+            <div class="spec-item"><strong>Estructura:</strong> Acero galvanizado G90</div>
+            <div class="spec-item"><strong>Pasos:</strong> Aluminio reforzado antiderrapante</div>
+            <div class="spec-item"><strong>Motor:</strong> Trifásico 380V IP55</div>
+            <div class="spec-item"><strong>Temp. operación:</strong> -20°C a +60°C</div>
+          </div>
+          <h3 class="subsection-title">Características especiales</h3>
+          <ul class="advantages-list">
+            <li>✅ Sellado contra polvo y virutas metálicas</li>
+            <li>✅ Bandas de paso con dureza HRC 58 mínimo</li>
+            <li>✅ Protección IP55 en todos los componentes eléctricos</li>
+            <li>✅ Compatible con sistemas SCADA industriales</li>
+            <li>✅ Parada de emergencia tipo "seta" accesible</li>
+          </ul>
+        </div>
+        <div class="info-sidebar">
+          <div class="info-card">
+            <h3>Aplicaciones industriales</h3>
+            <ul class="check-list">
+              <li>Plantas automotrices</li>
+              <li>Centros de distribución</li>
+              <li>Almacenes de e-commerce</li>
+              <li>Aeropuertos y terminales</li>
+              <li>Plantas alimentarias</li>
+              <li>Puertos y logística</li>
+            </ul>
+          </div>
+          <div class="info-card info-card--accent">
+            <h3>Mantenimiento industrial</h3>
+            <p>Ofrecemos contratos de mantenimiento preventivo ajustados a las exigencias del entorno industrial, con técnicos especializados en ambientes de manufactura.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionCTA
+        title="¿Tienes una bodega o planta industrial?"
+        text="Evaluamos las condiciones específicas de tu instalación para recomendarte la escalera eléctrica industrial correcta. Visita técnica sin costo."
+        buttonText="Solicitar visita técnica →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+  <div id="cotizador">
+    <QuoteForm title="Cotiza tu escalera eléctrica industrial" subtitle="Cuéntanos sobre las condiciones de tu planta o bodega." />
+  </div>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .breadcrumb { font-size: var(--text-sm); color: rgba(255,255,255,.7); margin-block-end: var(--space-lg); }
+  .breadcrumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; max-width: 22ch; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .text-accent { color: var(--color-accent); }
+  .hero-ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .btn-primary { background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .btn-secondary { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); border: 1px solid rgba(255,255,255,.3); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-4xl); align-items: start; }
+  @media(max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .section-title-left { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); line-height: 1.2; margin-block-end: var(--space-xl); }
+  .body-text { font-size: var(--text-base); color: var(--color-text); line-height: 1.8; margin-block-end: var(--space-md); }
+  .subsection-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); margin-block: var(--space-xl) var(--space-lg); }
+  .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .spec-item { background: #f8f9fa; padding: var(--space-md); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-text); border-left: 3px solid var(--color-accent); }
+  .spec-item strong { color: var(--color-primary); }
+  .advantages-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .advantages-list li { font-size: var(--text-base); color: var(--color-text); }
+  .info-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .info-card { background: #f8f9fa; border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .info-card--accent { background: var(--color-primary); color: #fff; }
+  .info-card h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-md); }
+  .info-card--accent h3 { color: var(--color-accent); }
+  .info-card--accent p { font-size: var(--text-sm); color: rgba(255,255,255,.9); line-height: 1.7; }
+  .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .check-list li { font-size: var(--text-sm); color: var(--color-text); }
+  .check-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+</style>

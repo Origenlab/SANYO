@@ -1,0 +1,125 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+import QuoteForm from "@components/QuoteForm.astro";
+---
+<PageLayout
+  title="Plataformas Industriales de Carga — Bodegas CDMX | Sanyo"
+  description="Plataformas elevadoras industriales de carga para bodegas y fábricas en CDMX. Hasta 5,000 kg. Instalación rápida. Certificadas y con garantía. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/plataformas/">Plataformas</a> › Industrial</div>
+      <span class="page-badge">Plataforma industrial</span>
+      <h1 class="page-hero__title">Plataformas de carga <span class="text-accent">industriales</span></h1>
+      <p class="page-hero__subtitle">
+        Plataformas elevadoras para carga pesada en bodegas, almacenes y plantas industriales. 
+        Capacidades de 500 kg hasta 5,000 kg. Instalación rápida sin obras civiles mayores.
+      </p>
+      <div class="hero-ctas">
+        <a href="/cotizar" class="btn-primary">Cotizar plataforma industrial →</a>
+        <a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title-left">Plataformas para <span class="text-accent">carga pesada</span></h2>
+          <p class="body-text">
+            Las <strong>plataformas elevadoras industriales</strong> son la solución más económica y versátil 
+            para mover carga entre niveles en instalaciones industriales. A diferencia de un elevador de carga 
+            convencional, las plataformas requieren menor obra civil y tienen plazos de instalación más cortos.
+          </p>
+          <h3 class="subsection-title">Tipos de plataformas industriales</h3>
+          <div class="types-grid">
+            <div class="type-card">
+              <h4>Plataforma de tijeras</h4>
+              <p>Elevación hasta 4 m. Ideal para carga y descarga entre andén y zona de producción. Muy resistente y de fácil mantenimiento.</p>
+            </div>
+            <div class="type-card">
+              <h4>Plataforma vertical (autoportante)</h4>
+              <p>Para alturas de 1 a 10 m. Estructura de acero autoportante que no requiere fosa. Instalación en 1 semana.</p>
+            </div>
+            <div class="type-card">
+              <h4>Plataforma con fosa</h4>
+              <p>Sistema integrado al piso para mayor estética y funcionalidad. Requiere fosa de concreto. Alta capacidad de carga.</p>
+            </div>
+            <div class="type-card">
+              <h4>Andén nivelador</h4>
+              <p>Para nivelar entre el piso del almacén y el piso del camión. Imprescindible en centros de distribución de alto volumen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="info-sidebar">
+          <div class="info-card">
+            <h3>Especificaciones</h3>
+            <ul class="check-list">
+              <li>Capacidad: 500 – 5,000 kg</li>
+              <li>Altura: hasta 10 m</li>
+              <li>Plataforma: hasta 3×4 m</li>
+              <li>Motor: Hidráulico / eléctrico</li>
+              <li>Control: Botonera o remoto</li>
+            </ul>
+          </div>
+          <div class="info-card info-card--accent">
+            <h3>Ventaja vs. montacargas</h3>
+            <p>Una plataforma industrial permite mover carga <strong>sin operador de montacargas</strong>, reduciendo costos operativos y aumentando la seguridad del personal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionCTA
+        title="¿Necesitas mover carga entre niveles?"
+        text="Evaluamos tu operación logística y te recomendamos la plataforma con mejor relación costo-beneficio. Instalación en 1-2 semanas con mínima interrupción."
+        buttonText="Solicitar evaluación →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+  <div id="cotizador">
+    <QuoteForm title="Cotiza tu plataforma industrial" subtitle="Indica la capacidad de carga y la altura para recibir una propuesta detallada." />
+  </div>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .breadcrumb { font-size: var(--text-sm); color: rgba(255,255,255,.7); margin-block-end: var(--space-lg); }
+  .breadcrumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; max-width: 22ch; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .text-accent { color: var(--color-accent); }
+  .hero-ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .btn-primary { background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .btn-secondary { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); border: 1px solid rgba(255,255,255,.3); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-4xl); align-items: start; }
+  @media(max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .section-title-left { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); line-height: 1.2; margin-block-end: var(--space-xl); }
+  .body-text { font-size: var(--text-base); color: var(--color-text); line-height: 1.8; margin-block-end: var(--space-md); }
+  .subsection-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); margin-block: var(--space-xl) var(--space-lg); }
+  .types-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+  .type-card { background: #f8f9fa; padding: var(--space-xl); border-radius: var(--radius-lg); border-left: 3px solid var(--color-accent); }
+  .type-card h4 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-sm); }
+  .type-card p { font-size: var(--text-sm); color: var(--color-text-light); line-height: 1.6; }
+  .info-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .info-card { background: #f8f9fa; border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .info-card--accent { background: var(--color-primary); color: #fff; }
+  .info-card h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-md); }
+  .info-card--accent h3 { color: var(--color-accent); }
+  .info-card--accent p { font-size: var(--text-sm); color: rgba(255,255,255,.9); line-height: 1.7; }
+  .info-card--accent strong { color: #fff; }
+  .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .check-list li { font-size: var(--text-sm); color: var(--color-text); }
+  .check-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+</style>

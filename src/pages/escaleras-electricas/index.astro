@@ -1,0 +1,119 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Card from "@components/Card.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+
+const escaleras = [
+  {
+    title: "Comercial",
+    subtitle: "Centros comerciales y retail",
+    description: "Escaleras eléctricas de alto tráfico para centros comerciales, tiendas departamentales y plazas. Operación continua 24/7, bajo mantenimiento y certificación NOM-147-SCFI.",
+    href: "/escaleras-electricas/escalera-comercial",
+  },
+  {
+    title: "Industrial",
+    subtitle: "Bodegas y almacenes",
+    description: "Escaleras eléctricas industriales para fábricas, almacenes y centros de distribución. Estructura reforzada, bandas antideslizantes y alta resistencia a condiciones de trabajo.",
+    href: "/escaleras-electricas/escalera-industrial",
+  },
+  {
+    title: "Exterior",
+    subtitle: "Intemperie y espacios abiertos",
+    description: "Escaleras eléctricas diseñadas para instalación exterior. Resistentes a lluvia, humedad y rayos UV. Ideales para estaciones de metro, terminales y espacios abiertos.",
+    href: "/escaleras-electricas/escalera-exterior",
+  },
+];
+---
+
+<PageLayout
+  title="Escaleras Eléctricas — Venta, Instalación y Mantenimiento CDMX | Sanyo"
+  description="Escaleras eléctricas para centros comerciales, industria y exteriores en CDMX. Instalación, mantenimiento y certificación. Marcas Mitsubishi, Kone, Schindler. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-badge">Catálogo escaleras eléctricas</span>
+      <h1 class="page-hero__title">Escaleras eléctricas para <span class="text-accent">todo uso</span></h1>
+      <p class="page-hero__subtitle">
+        Instalamos y mantenemos escaleras eléctricas de las mejores marcas del mundo para centros comerciales, 
+        industria y uso exterior en CDMX y toda la República Mexicana.
+      </p>
+      <a href="/cotizar" class="btn-primary">Cotizar instalación →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cards-grid">
+        {escaleras.map(e => (
+          <Card title={e.title} subtitle={e.subtitle} description={e.description} ctaText="Ver detalles" ctaHref={e.href} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="info-grid">
+        <div>
+          <h2 class="section-title-left">¿Por qué elegir <span class="text-accent">Sanyo</span> para tu escalera eléctrica?</h2>
+          <p class="body-text">Las escaleras eléctricas requieren mantenimiento especializado y técnicos certificados. En Sanyo contamos con más de 20 años instalando y manteniendo escaleras eléctricas en México.</p>
+          <ul class="check-list">
+            <li>Técnicos certificados por los fabricantes</li>
+            <li>Refacciones originales en stock</li>
+            <li>Servicio de emergencia 24/7</li>
+            <li>Cumplimiento NOM-147-SCFI garantizado</li>
+            <li>Cobertura en 32 estados</li>
+          </ul>
+        </div>
+        <div class="normas-box">
+          <h3>Normas aplicables</h3>
+          <div class="norma-item">
+            <span class="norma-code">NOM-147-SCFI</span>
+            <p>Requisitos de seguridad para escaleras mecánicas y andenes móviles en México.</p>
+          </div>
+          <div class="norma-item">
+            <span class="norma-code">NOM-247-SSA1</span>
+            <p>Accesibilidad universal — ancho mínimo, bandas antideslizantes y señalización.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionCTA
+        title="¿Necesitas cotización para escaleras eléctricas?"
+        text="Cuéntanos sobre tu proyecto y recibe una propuesta detallada en menos de 24 horas. Asesoría técnica gratuita."
+        buttonText="Cotizar gratis →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .text-accent { color: var(--color-accent); }
+  .btn-primary { display: inline-block; background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
+  @media(max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } }
+  .info-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-4xl); align-items: start; }
+  @media(max-width: 900px) { .info-grid { grid-template-columns: 1fr; } }
+  .section-title-left { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); line-height: 1.2; margin-block-end: var(--space-xl); }
+  .body-text { font-size: var(--text-base); color: var(--color-text); line-height: 1.8; margin-block-end: var(--space-lg); }
+  .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .check-list li { font-size: var(--text-base); color: var(--color-text); }
+  .check-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+  .normas-box { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .normas-box h3 { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-md); }
+  .norma-item { background: var(--color-primary); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .norma-code { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-sm); font-weight: 800; padding: var(--space-xs) var(--space-md); border-radius: var(--radius-sm); margin-block-end: var(--space-md); }
+  .norma-item p { font-size: var(--text-sm); color: rgba(255,255,255,.9); line-height: 1.6; margin: 0; }
+</style>

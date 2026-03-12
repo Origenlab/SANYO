@@ -1,0 +1,197 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Card from "@components/Card.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+
+const elevadores = [
+  {
+    title: "Pasajeros",
+    subtitle: "4 a 20 personas",
+    description: "Elevadores para edificios comerciales, corporativos y residenciales. Capacidad de 320 a 1,600 kg. Velocidades de 0.63 a 4 m/s. Certificados NOM-147-SCFI.",
+    href: "/elevadores/elevador-pasajeros",
+    ctaText: "Ver detalles",
+  },
+  {
+    title: "Carga Industrial",
+    subtitle: "500 kg a 5,000 kg",
+    description: "Montacargas y elevadores de carga para bodegas, almacenes e industrias. Puertas de doble hoja, pisos reforzados y sistemas de seguridad certificados.",
+    href: "/elevadores/elevador-carga",
+    ctaText: "Ver detalles",
+  },
+  {
+    title: "Hidráulico",
+    subtitle: "Sin cuarto de máquinas",
+    description: "Sistema hidráulico ideal para edificios sin espacio para cuarto de máquinas. Bajo mantenimiento, movimiento suave y excelente eficiencia energética.",
+    href: "/elevadores/elevador-hidraulico",
+    ctaText: "Ver detalles",
+  },
+  {
+    title: "MRL Eléctrico",
+    subtitle: "Machine Room Less",
+    description: "Tecnología MRL de última generación. El motor se instala en el hueco, eliminando el cuarto de máquinas. Ahorro de espacio hasta 30% y energía hasta 70%.",
+    href: "/elevadores/elevador-electrico-mrl",
+    ctaText: "Ver detalles",
+  },
+  {
+    title: "Panorámico",
+    subtitle: "Cristal y diseño premium",
+    description: "Elevadores panorámicos de vidrio para lobbies, hoteles y centros comerciales de alto nivel. Iluminación LED integrada y acabados personalizados.",
+    href: "/elevadores/elevador-panoramico",
+    ctaText: "Ver detalles",
+  },
+  {
+    title: "Residencial",
+    subtitle: "Para casas y condominios",
+    description: "Elevadores compactos y silenciosos para residencias. Instalación en espacios reducidos, bajo consumo eléctrico y diseños que se integran al interior.",
+    href: "/elevadores/elevador-residencial",
+    ctaText: "Ver detalles",
+  },
+  {
+    title: "Accesibilidad",
+    subtitle: "NOM-247-SSA1",
+    description: "Elevadores diseñados para personas con discapacidad y movilidad reducida. Dimensiones reglamentarias, botoneras en Braille y cumplimiento total de normas.",
+    href: "/elevadores/elevador-discapacitados",
+    ctaText: "Ver detalles",
+  },
+];
+---
+
+<PageLayout
+  title="Catálogo de Elevadores — Sanyo Elevadores CDMX México"
+  description="Venta e instalación de todo tipo de elevadores en México: pasajeros, carga, hidráulico, MRL, panorámico, residencial y accesibilidad. Marcas líderes. Cotiza gratis."
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-badge">Catálogo completo</span>
+      <h1 class="page-hero__title">Elevadores para <span class="text-accent">cada necesidad</span></h1>
+      <p class="page-hero__subtitle">
+        Ofrecemos instalación, venta y mantenimiento de todos los tipos de elevadores en México. 
+        Marcas líderes: Mitsubishi Electric, ThyssenKrupp, Kone, Otis y Schindler.
+      </p>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section class="section">
+    <div class="container">
+      <div class="cards-grid">
+        {elevadores.map(el => (
+          <Card
+            title={el.title}
+            subtitle={el.subtitle}
+            description={el.description}
+            ctaText={el.ctaText}
+            ctaHref={el.href}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué Sanyo -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Por qué elegir <span class="text-accent">Sanyo</span> para tu elevador?</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature__icon">🏭</div>
+          <h3>Marcas premium</h3>
+          <p>Distribuidor autorizado de Mitsubishi Electric, ThyssenKrupp, Kone, Otis y Schindler.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">📋</div>
+          <h3>Certificación NOM-147-SCFI</h3>
+          <p>Todos los equipos instalados cumplen con la norma oficial mexicana vigente.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🔧</div>
+          <h3>Instalación garantizada</h3>
+          <p>Ingenieros certificados con 20+ años de experiencia en instalaciones de todo tipo.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🚨</div>
+          <h3>Soporte 24/7</h3>
+          <p>Servicio técnico disponible los 365 días del año para emergencias y mantenimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <SectionCTA
+        title="¿No encuentras el elevador que necesitas?"
+        text="Nuestros ingenieros te asesoran para encontrar la solución ideal. Evaluamos tu espacio, tráfico estimado y presupuesto para recomendarte el equipo perfecto."
+        buttonText="Cotizar gratis"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero {
+    background: var(--color-primary);
+    color: #fff;
+    padding-block: var(--space-4xl);
+  }
+  .page-hero__title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-block: var(--space-lg);
+    color: #fff;
+  }
+  .page-hero__subtitle {
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,.85);
+    line-height: 1.7;
+    max-width: 60ch;
+  }
+  .page-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: var(--radius-full);
+  }
+  .text-accent { color: var(--color-accent); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+  @media(max-width: 1024px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media(max-width: 640px) { .cards-grid { grid-template-columns: 1fr; } }
+  .section-header { text-align: center; margin-block-end: var(--space-3xl); }
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+  @media(max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media(max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
+  .feature {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+  .feature__icon { font-size: 2.5rem; margin-block-end: var(--space-md); }
+  .feature h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-sm); }
+  .feature p { font-size: var(--text-sm); color: var(--color-text-light); line-height: 1.6; }
+</style>

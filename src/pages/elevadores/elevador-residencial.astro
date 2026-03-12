@@ -1,0 +1,130 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+import QuoteForm from "@components/QuoteForm.astro";
+---
+<PageLayout
+  title="Elevador Residencial para Casa — Precio México CDMX | Sanyo"
+  description="Elevadores residenciales compactos para casas y condominios en CDMX. Silenciosos, bajo consumo, diseños elegantes. Desde 2 pisos. Precio competitivo. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/elevadores/">Elevadores</a> › Residencial</div>
+      <span class="page-badge">Elevadores residenciales</span>
+      <h1 class="page-hero__title">Elevador para casa — <span class="text-accent">compacto, silencioso y elegante</span></h1>
+      <p class="page-hero__subtitle">
+        Los elevadores residenciales de Sanyo son la solución perfecta para casas de 2 a 5 pisos. 
+        Diseño que se integra a la decoración, bajo consumo eléctrico y mantenimiento mínimo.
+      </p>
+      <div class="hero-ctas">
+        <a href="/cotizar" class="btn-primary">Ver precio de elevador para casa →</a>
+        <a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title-left">Elevadores residenciales <span class="text-accent">a tu medida</span></h2>
+          <p class="body-text">
+            Un <strong>elevador residencial</strong> mejora la calidad de vida en tu hogar, facilita el acceso 
+            a todos los niveles y aumenta el valor de tu propiedad. A diferencia de los elevadores comerciales, 
+            los modelos residenciales son más compactos, silenciosos y con acabados que se integran al diseño 
+            interior de tu casa.
+          </p>
+          <p class="body-text">
+            En Sanyo ofrecemos elevadores residenciales en dos sistemas: <strong>hidráulico</strong> (ideal para 
+            2-4 pisos, ultra silencioso) y <strong>MRL eléctrico</strong> (para 2-5 pisos, mayor eficiencia). 
+            Ambos se instalan en huecos desde <strong>80×100 cm</strong>.
+          </p>
+          <h3 class="subsection-title">¿Por qué instalar un elevador en tu casa?</h3>
+          <ul class="advantages-list">
+            <li>✅ Accesibilidad para adultos mayores o personas con movilidad reducida</li>
+            <li>✅ Mayor comodidad al subir compras, maletas o electrodomésticos</li>
+            <li>✅ Aumenta el valor de reventa de tu propiedad</li>
+            <li>✅ Elemento diferenciador y de lujo en tu hogar</li>
+            <li>✅ Ideal para casas de 2 a 5 niveles</li>
+          </ul>
+          <h3 class="subsection-title">Especificaciones residenciales</h3>
+          <div class="specs-grid">
+            <div class="spec-item"><strong>Capacidad:</strong> 2–4 personas (200–400 kg)</div>
+            <div class="spec-item"><strong>Pisos:</strong> 2 a 5 paradas</div>
+            <div class="spec-item"><strong>Hueco mín.:</strong> 800 × 1,000 mm</div>
+            <div class="spec-item"><strong>Velocidad:</strong> 0.15 – 0.40 m/s</div>
+            <div class="spec-item"><strong>Ruido:</strong> &lt;45 dB (más silencioso que AC)</div>
+            <div class="spec-item"><strong>Consumo:</strong> Comparable a un refrigerador</div>
+          </div>
+        </div>
+        <div class="info-sidebar">
+          <div class="info-card">
+            <h3>Opciones de acabados</h3>
+            <ul class="check-list">
+              <li>Acero inoxidable cepillado</li>
+              <li>Madera lacada o natural</li>
+              <li>Cristal templado</li>
+              <li>Combinaciones personalizadas</li>
+              <li>Iluminación LED integrada</li>
+            </ul>
+          </div>
+          <div class="info-card info-card--accent">
+            <h3>Precio referencial</h3>
+            <p>Un elevador residencial en México puede instalarse desde <strong>$180,000 MXN</strong> dependiendo del sistema, número de pisos y acabados. Cotización exacta sin costo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionCTA
+        title="¿Cabe un elevador en mi casa?"
+        text="Muchas casas pueden adaptarse para recibir un elevador. Nuestros ingenieros visitan tu propiedad sin costo para evaluar la viabilidad y recomendarte la mejor solución."
+        buttonText="Solicitar visita técnica →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+  <div id="cotizador">
+    <QuoteForm title="Cotiza tu elevador residencial" subtitle="Indica el número de pisos y recibirás una propuesta en 24 horas." />
+  </div>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .breadcrumb { font-size: var(--text-sm); color: rgba(255,255,255,.7); margin-block-end: var(--space-lg); }
+  .breadcrumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; max-width: 22ch; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .text-accent { color: var(--color-accent); }
+  .hero-ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .btn-primary { background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .btn-secondary { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); border: 1px solid rgba(255,255,255,.3); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-4xl); align-items: start; }
+  @media(max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .section-title-left { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); line-height: 1.2; margin-block-end: var(--space-xl); }
+  .body-text { font-size: var(--text-base); color: var(--color-text); line-height: 1.8; margin-block-end: var(--space-md); }
+  .subsection-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); margin-block: var(--space-xl) var(--space-lg); }
+  .advantages-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); margin-block-end: var(--space-lg); }
+  .advantages-list li { font-size: var(--text-base); color: var(--color-text); }
+  .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .spec-item { background: #f8f9fa; padding: var(--space-md); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-text); border-left: 3px solid var(--color-accent); }
+  .spec-item strong { color: var(--color-primary); }
+  .info-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .info-card { background: #f8f9fa; border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .info-card--accent { background: var(--color-primary); color: #fff; }
+  .info-card h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-md); }
+  .info-card--accent h3 { color: var(--color-accent); }
+  .info-card--accent p { font-size: var(--text-sm); color: rgba(255,255,255,.9); line-height: 1.7; }
+  .info-card--accent strong { color: #fff; }
+  .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .check-list li { font-size: var(--text-sm); color: var(--color-text); }
+  .check-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+</style>

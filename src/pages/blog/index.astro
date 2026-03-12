@@ -1,0 +1,22 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+---
+<PageLayout title="Blog — Elevadores y Escaleras Eléctricas | Sanyo" description="Artículos técnicos sobre elevadores, escaleras eléctricas, mantenimiento NOM-147-SCFI, costos y tecnología MRL en México.">
+  <section class="page-hero"><div class="container">
+    <h1 class="page-hero__title">Blog de <span class="text-accent">elevadores y escaleras</span></h1>
+    <p class="page-hero__subtitle">Guías técnicas, costos reales, normativas NOM y todo lo que necesitas saber sobre elevadores en México.</p>
+  </div></section>
+  <section class="section"><div class="container">
+    <div class="cards-grid">
+      {[
+        ["¿Cuánto cuesta instalar un elevador en México?", "/blog/cuanto-cuesta-instalar-elevador-cdmx"],
+        ["NOM-147-SCFI: La norma de elevadores en México", "/blog/mantenimiento-elevador-norma-nom-147"],
+        ["Elevador sin cuarto de máquinas (MRL): Guía completa", "/blog/elevador-sin-cuarto-maquinas-mrl-guia"],
+        ["Escalera eléctrica para centro comercial: ¿Qué elegir?", "/blog/escalera-electrica-centro-comercial-guia"],
+        ["Elevador residencial para casa: precios y tipos", "/blog/elevador-residencial-casa-precio-mexico"],
+      ].map(([title, href]) => (
+        <a href={href} class="card"><h3>{title}</h3><span class="card-arrow">Leer →</span></a>
+      ))}
+    </div>
+  </div></section>
+</PageLayout>

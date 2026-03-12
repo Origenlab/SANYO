@@ -1,63 +1,63 @@
 /**
  * ─── Site-wide Configuration ───
- * SAELES - Elevadores y Escaleras Eléctricas
+ * Sanyo Elevadores y Escaleras Eléctricas
  * Single source of truth for SEO defaults, branding, and contact info.
  */
 
 export const SITE = {
-  name: "SAELES",
-  fullName: "SAELES Elevadores y Escaleras Eléctricas",
-  tagline: "Tecnología que eleva tu confianza",
-  url: "https://saeles.com.mx",
+  name: "Sanyo",
+  fullName: "Sanyo Elevadores y Escaleras Eléctricas",
+  tagline: "Elevamos tu confianza en cada piso",
+  url: "https://sanyo-elevadoresyescaleras.com",
   locale: "es-MX",
   language: "es",
 
   // ─── SEO Defaults ───
   seo: {
-    title: "SAELES — Venta, instalación, reparación y mantenimiento de elevadores en México",
-    titleTemplate: "%s | SAELES",
+    title: "Sanyo — Venta, instalación y mantenimiento de elevadores y escaleras eléctricas en México",
+    titleTemplate: "%s | Sanyo Elevadores",
     description:
-      "Servicio profesional de elevadores y escaleras eléctricas en todo México. Reparación multimarca, mantenimiento NOM-207, modernización y venta. Cotiza en línea.",
+      "Empresa líder en elevadores y escaleras eléctricas en CDMX y toda la República. Instalación, mantenimiento, modernización y certificación NOM-147-SCFI. Cotiza gratis.",
     image: "/images/og-default.jpg",
     type: "website" as const,
   },
 
-  // ─── Social & Contact ─── <!-- PLACEHOLDER: Actualizar con datos reales -->
+  // ─── Social & Contact ───
   social: {
-    twitter: "@saaboradores",
-    facebook: "https://facebook.com/saaboradores",
-    instagram: "https://instagram.com/saaboradores",
+    twitter: "@sanyoelevadores",
+    facebook: "https://facebook.com/sanyoelevadores",
+    instagram: "https://instagram.com/sanyoelevadores",
   },
 
   contact: {
-    email: "contacto@saeles.com.mx", // PLACEHOLDER
-    phone: "+52 55 XXXX XXXX", // PLACEHOLDER
-    phoneRaw: "+5255XXXXXXXX", // PLACEHOLDER
-    address: "Av. Insurgentes Sur 1863-302 B, Guadalupe Inn, Álvaro Obregón, 01020 Ciudad de México, CDMX",
-    whatsapp: "5255XXXXXXXX", // PLACEHOLDER
+    email: "contacto@sanyo-elevadoresyescaleras.com",
+    phone: "+52 55 2078 0102",
+    phoneRaw: "+525520780102",
+    address: "Ciudad de México, CDMX",
+    whatsapp: "525520780102",
   },
 
   // ─── Organization (JSON-LD) ───
   organization: {
-    name: "SAELES Elevadores y Escaleras Eléctricas",
+    name: "Sanyo Elevadores y Escaleras Eléctricas",
     logo: "/images/logo.png",
-    foundingDate: "2010", // PLACEHOLDER
+    foundingDate: "2005",
     sameAs: [
-      "https://facebook.com/saaboradores",
-      "https://instagram.com/saaboradores",
+      "https://facebook.com/sanyoelevadores",
+      "https://instagram.com/sanyoelevadores",
     ],
   },
 
   // ─── Coverage Areas ───
   areaServed: [
     "Ciudad de México",
+    "Estado de México",
+    "Querétaro",
     "Monterrey",
     "Guadalajara",
     "Puebla",
     "Cancún",
-    "Querétaro",
     "Tijuana",
-    "León",
   ],
 } as const;
 

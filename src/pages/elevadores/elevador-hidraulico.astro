@@ -1,0 +1,129 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+import QuoteForm from "@components/QuoteForm.astro";
+---
+<PageLayout
+  title="Elevador Hidráulico sin Cuarto de Máquinas — CDMX | Sanyo"
+  description="Elevadores hidráulicos ideales para edificios sin espacio para cuarto de máquinas. Instalación en CDMX. Sistema silencioso, bajo mantenimiento. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/elevadores/">Elevadores</a> › Hidráulico</div>
+      <span class="page-badge">Sistema hidráulico</span>
+      <h1 class="page-hero__title">Elevador hidráulico — <span class="text-accent">sin cuarto de máquinas</span></h1>
+      <p class="page-hero__subtitle">
+        El sistema hidráulico es ideal para edificios de baja y mediana altura donde no hay espacio para cuarto de máquinas. 
+        Movimiento suave, bajo nivel de ruido y excelente relación precio-calidad.
+      </p>
+      <div class="hero-ctas">
+        <a href="/cotizar" class="btn-primary">Cotizar elevador hidráulico →</a>
+        <a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title-left">¿Cómo funciona un <span class="text-accent">elevador hidráulico</span>?</h2>
+          <p class="body-text">
+            Los <strong>elevadores hidráulicos</strong> utilizan un pistón hidráulico accionado por una bomba 
+            eléctrica para mover la cabina. El fluido hidráulico se almacena en un depósito ubicado en la misma 
+            planta baja, eliminando la necesidad de un cuarto de máquinas en el techo del edificio.
+          </p>
+          <p class="body-text">
+            Este sistema ofrece un <strong>movimiento extremadamente suave</strong> (ideal para hospitales y 
+            hoteles de lujo), bajo nivel de ruido y fácil mantenimiento. Es la solución preferida para edificios 
+            de hasta 6 pisos con cargas de hasta 3,000 kg.
+          </p>
+          <h3 class="subsection-title">Ventajas del sistema hidráulico</h3>
+          <ul class="advantages-list">
+            <li>✅ No requiere cuarto de máquinas en el techo</li>
+            <li>✅ Movimiento ultra suave — ideal para hoteles y hospitales</li>
+            <li>✅ Bajo nivel de ruido y vibraciones</li>
+            <li>✅ Fácil mantenimiento — pocos componentes móviles</li>
+            <li>✅ Costo inicial más bajo que sistemas eléctricos equivalentes</li>
+            <li>✅ Alta capacidad de carga disponible</li>
+          </ul>
+          <h3 class="subsection-title">Especificaciones técnicas</h3>
+          <div class="specs-grid">
+            <div class="spec-item"><strong>Altura máx.:</strong> Hasta 15 m (6 pisos aprox.)</div>
+            <div class="spec-item"><strong>Capacidad:</strong> 320 kg – 3,000 kg</div>
+            <div class="spec-item"><strong>Velocidad:</strong> 0.15 – 0.63 m/s</div>
+            <div class="spec-item"><strong>Energía:</strong> Trifásica 220V o 440V</div>
+          </div>
+        </div>
+        <div class="info-sidebar">
+          <div class="info-card">
+            <h3>¿Cuándo elegir hidráulico?</h3>
+            <ul class="check-list">
+              <li>Edificio de 2 a 6 pisos</li>
+              <li>Sin espacio en el techo</li>
+              <li>Cargas muy pesadas</li>
+              <li>Requiere movimiento suave</li>
+              <li>Presupuesto inicial ajustado</li>
+            </ul>
+          </div>
+          <div class="info-card info-card--accent">
+            <h3>Comparativa</h3>
+            <p>El sistema <strong>MRL eléctrico</strong> es mejor para edificios altos y mayor eficiencia energética. El <strong>hidráulico</strong> es ideal para baja altura y máxima suavidad de movimiento.</p>
+            <a href="/elevadores/elevador-electrico-mrl" class="compare-link">Ver elevador MRL →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionCTA
+        title="¿Es el hidráulico el mejor para tu edificio?"
+        text="Nuestros ingenieros analizan tu proyecto (altura, carga, espacio) y te recomiendan el sistema más adecuado. Asesoría técnica sin costo."
+        buttonText="Asesoría gratuita →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+  <div id="cotizador">
+    <QuoteForm title="Cotiza tu elevador hidráulico" subtitle="Indica el número de pisos y capacidad deseada. Respuesta en 24 horas." />
+  </div>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .breadcrumb { font-size: var(--text-sm); color: rgba(255,255,255,.7); margin-block-end: var(--space-lg); }
+  .breadcrumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; max-width: 20ch; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .text-accent { color: var(--color-accent); }
+  .hero-ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .btn-primary { background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .btn-secondary { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); border: 1px solid rgba(255,255,255,.3); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-4xl); align-items: start; }
+  @media(max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .section-title-left { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); line-height: 1.2; margin-block-end: var(--space-xl); }
+  .body-text { font-size: var(--text-base); color: var(--color-text); line-height: 1.8; margin-block-end: var(--space-md); }
+  .subsection-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); margin-block: var(--space-xl) var(--space-lg); }
+  .advantages-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); margin-block-end: var(--space-lg); }
+  .advantages-list li { font-size: var(--text-base); color: var(--color-text); }
+  .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .spec-item { background: #f8f9fa; padding: var(--space-md); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-text); border-left: 3px solid var(--color-accent); }
+  .spec-item strong { color: var(--color-primary); }
+  .info-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .info-card { background: #f8f9fa; border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .info-card--accent { background: var(--color-primary); color: #fff; }
+  .info-card h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-md); }
+  .info-card--accent h3 { color: var(--color-accent); }
+  .info-card--accent p { font-size: var(--text-sm); color: rgba(255,255,255,.9); line-height: 1.7; margin-block-end: var(--space-md); }
+  .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .check-list li { font-size: var(--text-sm); color: var(--color-text); }
+  .check-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+  .compare-link { display: inline-block; color: var(--color-accent); font-size: var(--text-sm); font-weight: 700; text-decoration: none; }
+</style>

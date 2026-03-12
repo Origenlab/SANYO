@@ -1,0 +1,109 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Card from "@components/Card.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+
+const servicios = [
+  {
+    title: "Instalación",
+    subtitle: "Equipos nuevos",
+    description: "Instalación profesional de elevadores, escaleras eléctricas y plataformas de todas las marcas. Ingenieros certificados y cumplimiento total NOM-147-SCFI.",
+    href: "/servicios/instalacion",
+  },
+  {
+    title: "Mantenimiento",
+    subtitle: "Preventivo y correctivo",
+    description: "Programas de mantenimiento preventivo mensual y correctivo para equipos de todas las marcas. Evita fallas, prolonga la vida útil y cumple con la norma.",
+    href: "/servicios/mantenimiento",
+  },
+  {
+    title: "Modernización",
+    subtitle: "Equipos antiguos",
+    description: "Moderniza tu elevador de 10-20 años y hazlo funcionar como nuevo. Ahorra hasta 70% de energía y cumple con las normas actuales sin comprar equipo nuevo.",
+    href: "/servicios/modernizacion",
+  },
+  {
+    title: "Certificación",
+    subtitle: "NOM-147-SCFI",
+    description: "Tramitamos la certificación NOM-147-SCFI para tu elevador o escalera eléctrica. Evita multas y cierre del equipo por incumplimiento normativo.",
+    href: "/servicios/certificacion",
+  },
+];
+---
+
+<PageLayout
+  title="Servicios de Elevadores y Escaleras Eléctricas — CDMX | Sanyo"
+  description="Instalación, mantenimiento, modernización y certificación de elevadores en CDMX. Servicio multimarca. NOM-147-SCFI. Cobertura 32 estados. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-badge">Nuestros servicios</span>
+      <h1 class="page-hero__title">Servicios integrales de <span class="text-accent">transporte vertical</span></h1>
+      <p class="page-hero__subtitle">
+        Todo lo que necesita tu equipo: instalación, mantenimiento preventivo y correctivo, modernización 
+        y certificación normativa. Servicio multimarca en CDMX y toda la República.
+      </p>
+      <a href="/cotizar" class="btn-primary">Solicitar servicio →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cards-grid">
+        {servicios.map(s => (
+          <Card title={s.title} subtitle={s.subtitle} description={s.description} ctaText="Ver detalles" ctaHref={s.href} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container">
+      <div class="emergency-box">
+        <div>
+          <span class="emergency-badge">🚨 Emergencias 24/7</span>
+          <h2 class="emergency-title">¿Tu elevador está detenido ahora mismo?</h2>
+          <p class="emergency-text">Atendemos emergencias los 365 días del año. Tiempo de respuesta menor a 90 minutos en CDMX.</p>
+        </div>
+        <div class="emergency-ctas">
+          <a href="tel:+525520780102" class="emergency-phone">📞 Llamar ahora</a>
+          <a href="https://wa.me/525520780102?text=EMERGENCIA: mi elevador está detenido" target="_blank" class="emergency-wa">💬 WhatsApp urgente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionCTA
+        title="¿Necesitas un contrato de mantenimiento?"
+        text="Ofrecemos contratos anuales de mantenimiento preventivo que incluyen visitas programadas, lubricación, ajustes, verificación de seguridad y atención de emergencias."
+        buttonText="Solicitar contrato →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .text-accent { color: var(--color-accent); }
+  .btn-primary { display: inline-block; background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; font-size: var(--text-base); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .section--dark { background: var(--color-primary); }
+  .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
+  @media(max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } }
+  .emergency-box { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3xl); flex-wrap: wrap; }
+  .emergency-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-sm); font-weight: 700; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .emergency-title { font-size: var(--text-2xl); font-weight: 800; color: #fff; margin-block-end: var(--space-md); }
+  .emergency-text { font-size: var(--text-base); color: rgba(255,255,255,.85); max-width: 45ch; }
+  .emergency-ctas { display: flex; flex-direction: column; gap: var(--space-md); }
+  .emergency-phone, .emergency-wa { display: block; text-align: center; padding: var(--space-md) var(--space-2xl); border-radius: var(--radius-md); font-weight: 700; text-decoration: none; font-size: var(--text-base); white-space: nowrap; }
+  .emergency-phone { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+  .emergency-wa { background: #25D366; color: #fff; }
+</style>
