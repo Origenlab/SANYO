@@ -1,18 +1,106 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { SITE } from "@data/site";
+import Card from "@components/Card.astro";
+import SectionCTA from "@components/SectionCTA.astro";
+
+const zonas = [
+  {
+    title: "CDMX",
+    subtitle: "16 alcaldías",
+    description: "Cobertura completa en las 16 alcaldías de Ciudad de México. Respuesta en emergencias menor a 90 minutos. Base de operaciones principal.",
+    href: "/zonas/cdmx",
+  },
+  {
+    title: "Estado de México",
+    subtitle: "Municipios conurbados",
+    description: "Servicio en Naucalpan, Tlalnepantla, Huixquilucan, Metepec, Toluca, Ecatepec y todos los municipios conurbados del Estado de México.",
+    href: "/zonas/estado-de-mexico",
+  },
+  {
+    title: "Querétaro",
+    subtitle: "Zona bajío",
+    description: "Atendemos Querétaro capital, El Marqués, Corregidora y San Juan del Río. Zona de alto crecimiento industrial y residencial.",
+    href: "/zonas/queretaro",
+  },
+];
 ---
-<PageLayout title="Zonas de Servicio — Elevadores CDMX y República | Sanyo" description="Sanyo instala y da mantenimiento a elevadores y escaleras eléctricas en CDMX, Estado de México, Querétaro, Guadalajara, Monterrey y toda la República.">
-  <section class="page-hero"><div class="container">
-    <h1 class="page-hero__title">Cobertura nacional de <span class="text-accent">elevadores y escaleras</span></h1>
-    <p class="page-hero__subtitle">Sanyo opera en los 32 estados de México. Instalación, mantenimiento y modernización de elevadores con ingenieros en sitio en CDMX, Estado de México, Querétaro, Guadalajara y Monterrey.</p>
-    <div class="hero-ctas"><a href="/cotizar" class="btn-primary">Cotizar en tu zona →</a><a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a></div>
-  </div></section>
-  <section class="section"><div class="container">
-    <div class="cards-grid">
-      {[["CDMX", "/zonas/cdmx", "32 alcaldías, respuesta en 4 horas"],["Estado de México","/zonas/estado-de-mexico","Naucalpan, Tlalnepantla, Ecatepec, Toluca"],["Querétaro","/zonas/queretaro","Santiago de Querétaro y zona metropolitana"],["Guadalajara","/zonas/guadalajara","ZMG: Zapopan, Tlaquepaque, Tonalá"],["Monterrey","/zonas/monterrey","San Nicolás, San Pedro, Apodaca"],["Puebla","/zonas/puebla","Capital y zona conurbada"]].map(([name, href, desc]) => (
-        <a href={href} class="card"><h3>{name}</h3><p>{desc}</p><span class="card-arrow">Ver cobertura →</span></a>
-      ))}
+
+<PageLayout
+  title="Cobertura de Servicio — Elevadores CDMX, Edomex, Querétaro | Sanyo"
+  description="Servicio de elevadores y escaleras eléctricas en CDMX, Estado de México, Querétaro y 32 estados. Cobertura nacional. Respuesta inmediata. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-badge">Zonas de servicio</span>
+      <h1 class="page-hero__title">Cobertura en <span class="text-accent">CDMX y toda la República</span></h1>
+      <p class="page-hero__subtitle">
+        Nuestra base de operaciones está en CDMX con cobertura inmediata en Estado de México y Querétaro. 
+        Atendemos proyectos en los 32 estados de la República Mexicana.
+      </p>
     </div>
-  </div></section>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cards-grid">
+        {zonas.map(z => (
+          <Card title={z.title} subtitle={z.subtitle} description={z.description} ctaText="Ver cobertura" ctaHref={z.href} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container">
+      <div class="national-grid">
+        <div>
+          <span class="badge-light">Cobertura nacional</span>
+          <h2 class="title-light">32 estados de la República</h2>
+          <p class="text-light">
+            Además de nuestra zona de cobertura inmediata (CDMX, Edomex, Querétaro), realizamos proyectos de 
+            instalación y modernización en todo México. Para proyectos fuera de la zona metropolitana, enviamos 
+            equipos de ingenieros especializados.
+          </p>
+        </div>
+        <div class="states-wrap">
+          {["Aguascalientes","Baja California","Chihuahua","Coahuila","Guanajuato","Jalisco","Monterrey","Morelos","Oaxaca","Puebla","San Luis Potosí","Veracruz","Yucatán","Cancún"].map(s => (
+            <span class="state-pill">{s}</span>
+          ))}
+          <span class="state-pill state-pill--more">+ 18 estados más</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionCTA
+        title="¿Estás fuera de CDMX?"
+        text="No importa. Atendemos proyectos en toda la República. Contáctanos con los detalles de tu ubicación y te confirmamos la disponibilidad y tiempos de servicio."
+        buttonText="Consultar disponibilidad →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); }
+  .text-accent { color: var(--color-accent); }
+  .section { padding-block: var(--space-4xl); }
+  .section--dark { background: var(--color-primary); }
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
+  @media(max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } }
+  .national-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: var(--space-4xl); align-items: center; }
+  @media(max-width: 900px) { .national-grid { grid-template-columns: 1fr; } }
+  .badge-light { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .title-light { font-size: var(--text-3xl); font-weight: 800; color: #fff; margin-block-end: var(--space-lg); }
+  .text-light { font-size: var(--text-base); color: rgba(255,255,255,.85); line-height: 1.7; }
+  .states-wrap { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+  .state-pill { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: var(--text-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-full); }
+  .state-pill--more { background: var(--color-accent); border-color: var(--color-accent); font-weight: 700; }
+</style>

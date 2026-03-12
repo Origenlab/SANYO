@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // ─── Site URL (required for sitemap, canonical URLs, OG images) ───
   site: "https://sanyo-elevadoresyescaleras.com",
+  trailingSlash: "ignore",
 
   // ─── Integrations ───
   integrations: [

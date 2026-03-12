@@ -1,13 +1,119 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import SectionCTA from "@components/SectionCTA.astro";
+import QuoteForm from "@components/QuoteForm.astro";
+
+const municipios = [
+  "Naucalpan","Tlalnepantla","Huixquilucan","Atizapán","Cuautitlán Izcalli","Ecatepec",
+  "Nezahualcóyotl","Toluca","Metepec","Coacalco","Tecámac","Pachuca (cercano)"
+];
 ---
-<PageLayout title="Elevadores en estado-de-mexico | Sanyo Elevadores" description="Instalación y mantenimiento de elevadores y escaleras eléctricas en estado-de-mexico. Ingenieros certificados NOM-147-SCFI. Cotiza gratis hoy.">
-  <section class="page-hero"><div class="container">
-    <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/zonas/">Zonas</a> › estado-de-mexico</div>
-    <h1 class="page-hero__title">Elevadores en <span class="text-accent">estado-de-mexico</span></h1>
-    <p class="page-hero__subtitle">Sanyo instala, moderniza y da mantenimiento a elevadores y escaleras eléctricas en estado-de-mexico. Ingenieros certificados disponibles. Cotiza sin compromiso.</p>
-    <div class="hero-ctas"><a href="/cotizar" class="btn-primary">Cotizar →</a><a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a></div>
-  </div></section>
-  <SectionCTA title="¿Necesitas un elevador en estado-de-mexico?" cta="Solicitar cotización" href="/cotizar" />
+<PageLayout
+  title="Elevadores en Estado de México — Naucalpan, Tlalnepantla, Toluca | Sanyo"
+  description="Servicio de elevadores en Estado de México. Naucalpan, Tlalnepantla, Huixquilucan, Toluca, Metepec. Mantenimiento, instalación. NOM-147. Cotiza gratis."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/zonas/">Zonas</a> › Estado de México</div>
+      <span class="page-badge">Estado de México</span>
+      <h1 class="page-hero__title">Elevadores en <span class="text-accent">Estado de México</span></h1>
+      <p class="page-hero__subtitle">
+        Servicio completo en los municipios conurbados: Naucalpan, Tlalnepantla, Huixquilucan, Ecatepec 
+        y la zona de Toluca-Metepec. Tiempos de respuesta competitivos desde nuestra base CDMX.
+      </p>
+      <div class="hero-ctas">
+        <a href="/cotizar" class="btn-primary">Cotizar en Edomex →</a>
+        <a href="https://wa.me/525520780102" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title-left">Zona conurbada y <span class="text-accent">Valle de Toluca</span></h2>
+          <p class="body-text">
+            El Estado de México es una zona de alto crecimiento en construcción vertical. Desde parques 
+            industriales en Tlalnepantla y Naucalpan hasta desarrollos residenciales en Huixquilucan, 
+            Interlomas y la zona de Toluca-Metepec.
+          </p>
+          <p class="body-text">
+            Atendemos tanto <strong>elevadores comerciales</strong> en centros de negocio como 
+            <strong>elevadores residenciales</strong> en los nuevos desarrollos inmobiliarios que 
+            se construyen en toda la zona metropolitana.
+          </p>
+          <h3 class="subsection-title">Municipios con cobertura</h3>
+          <div class="municipios-grid">
+            {municipios.map(m => (
+              <span class="municipio-chip">{m}</span>
+            ))}
+          </div>
+        </div>
+        <div class="info-sidebar">
+          <div class="info-card">
+            <h3>Servicios en Edomex</h3>
+            <ul class="check-list">
+              <li>Instalación de equipos nuevos</li>
+              <li>Mantenimiento preventivo/correctivo</li>
+              <li>Modernización de elevadores</li>
+              <li>Certificación NOM-147-SCFI</li>
+              <li>Emergencias 24/7</li>
+            </ul>
+          </div>
+          <div class="info-card info-card--accent">
+            <h3>Zonas de alto crecimiento</h3>
+            <p>Interlomas, Santa Fe Edomex, Lomas Verdes, Bosque Real y los corredores industriales de Naucalpan-Tlalnepantla son nuestras zonas de mayor actividad en el estado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <SectionCTA
+        title="¿Tienes un proyecto en Estado de México?"
+        text="Contamos con técnicos especializados en la zona conurbada y el Valle de Toluca. Respuesta rápida y servicio profesional garantizado."
+        buttonText="Solicitar cotización Edomex →"
+        buttonHref="/cotizar"
+        variant="primary"
+      />
+    </div>
+  </section>
+
+  <div id="cotizador">
+    <QuoteForm title="Cotiza servicio en Estado de México" subtitle="Indica el municipio y tipo de servicio." />
+  </div>
 </PageLayout>
+
+<style>
+  .page-hero { background: var(--color-primary); color: #fff; padding-block: var(--space-4xl); }
+  .breadcrumb { font-size: var(--text-sm); color: rgba(255,255,255,.7); margin-block-end: var(--space-lg); }
+  .breadcrumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .page-badge { display: inline-block; background: var(--color-accent); color: #fff; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-full); margin-block-end: var(--space-md); }
+  .page-hero__title { font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; margin-block: var(--space-lg); color: #fff; }
+  .page-hero__subtitle { font-size: var(--text-lg); color: rgba(255,255,255,.85); line-height: 1.7; max-width: 55ch; margin-block-end: var(--space-xl); }
+  .text-accent { color: var(--color-accent); }
+  .hero-ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .btn-primary { background: var(--color-accent); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; }
+  .btn-secondary { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-md); text-decoration: none; border: 1px solid rgba(255,255,255,.3); }
+  .section { padding-block: var(--space-4xl); }
+  .section--alt { background: #f8f9fa; }
+  .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-4xl); align-items: start; }
+  @media(max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .section-title-left { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); line-height: 1.2; margin-block-end: var(--space-xl); }
+  .body-text { font-size: var(--text-base); color: var(--color-text); line-height: 1.8; margin-block-end: var(--space-md); }
+  .subsection-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); margin-block: var(--space-xl) var(--space-lg); }
+  .municipios-grid { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+  .municipio-chip { background: #f8f9fa; border: 1px solid var(--color-border-light); color: var(--color-text); font-size: var(--text-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-full); }
+  .info-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .info-card { background: #f8f9fa; border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .info-card--accent { background: var(--color-primary); color: #fff; }
+  .info-card h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); margin-block-end: var(--space-md); }
+  .info-card--accent h3 { color: var(--color-accent); }
+  .info-card--accent p { font-size: var(--text-sm); color: rgba(255,255,255,.9); line-height: 1.7; }
+  .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .check-list li { font-size: var(--text-sm); color: var(--color-text); }
+  .check-list li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+</style>
