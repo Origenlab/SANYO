@@ -1,0 +1,78 @@
+---
+const stats = [
+  { value: '20+', label: 'Años de experiencia' },
+  { value: '500+', label: 'Clientes activos' },
+  { value: '50+', label: 'Marcas atendidas' },
+  { value: '24/7', label: 'Servicio de emergencias' },
+];
+---
+
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-bar__grid">
+      {stats.map((stat) => (
+        <div class="stats-bar__item">
+          <span class="stats-bar__value">{stat.value}</span>
+          <span class="stats-bar__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .stats-bar {
+    background: var(--color-primary);
+    padding-block: var(--space-xl);
+  }
+
+  .stats-bar__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl) var(--space-md);
+    text-align: center;
+  }
+
+  .stats-bar__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: center;
+  }
+
+  .stats-bar__value {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .stats-bar__label {
+    font-size: var(--text-xs);
+    color: rgba(241, 250, 238, 0.8);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (min-width: 640px) {
+    .stats-bar__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    .stats-bar__value {
+      font-size: var(--text-4xl);
+    }
+
+    .stats-bar__label {
+      font-size: var(--text-sm);
+    }
+  }
+
+  @media (min-width: 968px) {
+    .stats-bar {
+      padding-block: var(--space-2xl);
+    }
+  }
+</style>

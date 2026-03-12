@@ -1,0 +1,394 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import { SITE } from "@data/site";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: '¿Qué servicios ofrece Sanyo Elevadores?',
+    answer: 'Ofrecemos mantenimiento preventivo y correctivo, instalación de equipos nuevos, modernización de elevadores obsoletos, emergencias 24/7, auditoría y certificación NOM-207 y NOM-053, venta de refacciones originales, y servicio para escaleras eléctricas y andenes móviles.',
+  },
+  {
+    question: '¿Atienden todas las marcas de elevadores?',
+    answer: 'Sí, somos especialistas en servicio multimarca. Atendemos más de 50 marcas: Otis, Schindler, KONE, TK Elevator, Mitsubishi, Hitachi, Fujitec, Hyundai, Orona, LG, Sigma, MacPuarsa, Kleemann, Wittur y cualquier otro fabricante. No necesitas cambiar de proveedor al cambiar de marca.',
+  },
+  {
+    question: '¿Cuánto tarda la respuesta en una emergencia?',
+    answer: 'En Ciudad de México garantizamos tiempo de respuesta menor a 2 horas. Contamos con técnicos de guardia distribuidos estratégicamente en la ciudad, disponibles las 24 horas del día, los 365 días del año, incluyendo fines de semana y días festivos.',
+  },
+  {
+    question: '¿Qué incluye el mantenimiento preventivo NOM-207?',
+    answer: 'El mantenimiento preventivo incluye: inspección completa de componentes mecánicos y eléctricos, lubricación de guías, cables y puertas, ajuste de frenos y velocidades, verificación del sistema de seguridad, prueba de paracaídas y limitador de velocidad, limpieza de foso y cuarto de máquinas, y emisión de bitácora certificada.',
+  },
+  {
+    question: '¿Cómo puedo solicitar una cotización?',
+    answer: 'Puedes solicitar cotización directamente en nuestro formulario en línea, enviando WhatsApp al número en nuestro sitio, o llamándonos. Respondemos en menos de 24 horas con propuesta detallada, incluyendo alcance del servicio, materiales, tiempo de ejecución y precio.',
+  },
+  {
+    question: '¿Ofrecen servicio fuera de Ciudad de México?',
+    answer: 'Sí, tenemos cobertura nacional. Contamos con técnicos en las principales ciudades de la República Mexicana: Guadalajara, Monterrey, Puebla, Querétaro, León, Tijuana y más. Consulta disponibilidad para tu ciudad.',
+  },
+  {
+    question: '¿Qué diferencia a Sanyo de las empresas de marca?',
+    answer: 'La independencia multimarca: puedes tener elevadores de diferentes fabricantes y un solo proveedor que los atienda todos. Además ofrecemos precios más competitivos al no estar atados a contratos exclusivos de fábrica, mayor flexibilidad en horarios y sin cargos por visitas adicionales.',
+  },
+  {
+    question: '¿Los trabajos incluyen garantía?',
+    answer: 'Todos nuestros trabajos incluyen garantía por escrito: 6 meses en mano de obra y 12 meses en refacciones instaladas. Entregamos certificado de garantía firmado por el técnico responsable y el supervisor de calidad. En caso de falla dentro del periodo, retornamos sin costo adicional.',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<section class="faq" id="preguntas-frecuentes">
+  <div class="container">
+    <SectionHeader
+      badge="Preguntas Frecuentes"
+      title="Resolvemos tus dudas sobre"
+      highlight="elevadores y servicio"
+      subtitle="Encuentra respuesta a las consultas más comunes de nuestros clientes sobre mantenimiento, marcas, precios y normatividad."
+      align="center"
+    />
+
+    <div class="faq__grid">
+      <div class="faq__list">
+        {faqs.map((faq) => (
+          <details class="faq__item" name="faq-accordion">
+            <summary class="faq__question">
+              <span class="faq__question-text">{faq.question}</span>
+              <span class="faq__toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <aside class="faq__sidebar">
+        <div class="faq__card">
+          <h3 class="faq__card-title">¿No encuentras tu pregunta?</h3>
+          <p class="faq__card-text">Nuestros especialistas responden en menos de 24 horas</p>
+          <ul class="faq__contact-list">
+            <li>
+              <span class="faq__bullet"></span>
+              <a href={`https://wa.me/${SITE.contact.whatsapp}`} rel="noopener noreferrer">WhatsApp directo</a>
+            </li>
+            <li>
+              <span class="faq__bullet"></span>
+              <a href={`tel:${SITE.contact.phone}`}>{SITE.contact.phone}</a>
+            </li>
+            <li>
+              <span class="faq__bullet"></span>
+              <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="faq__card">
+          <h3 class="faq__card-title">Horario de Atención</h3>
+          <div class="faq__schedule">
+            <div class="faq__schedule-row">
+              <span>Lunes – Viernes</span>
+              <strong>8:00 – 18:00</strong>
+            </div>
+            <div class="faq__schedule-row">
+              <span>Sábado</span>
+              <strong>9:00 – 14:00</strong>
+            </div>
+            <div class="faq__schedule-row">
+              <span>Emergencias</span>
+              <strong>24/7</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__card faq__card--cta">
+          <h3 class="faq__card-title faq__card-title--light">¿Necesitas cotizar?</h3>
+          <p class="faq__card-text faq__card-text--light">Solicita cotización sin compromiso</p>
+          <a href="#cotizador" class="faq__cta-btn">Solicitar cotización</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+<style>
+  .faq {
+    padding-block: var(--space-4xl);
+    background: var(--color-bg-alt);
+  }
+
+  .faq__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  /* List */
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .faq__item {
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+  }
+
+  .faq__item[open] {
+    box-shadow: var(--shadow-md);
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+    min-height: 56px;
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__question-text {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.4;
+  }
+
+  .faq__item[open] .faq__question-text {
+    color: var(--color-accent);
+  }
+
+  .faq__toggle {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    background: var(--color-border-light);
+    border-radius: 50%;
+    position: relative;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .faq__toggle::before,
+  .faq__toggle::after {
+    content: '';
+    position: absolute;
+    background: var(--color-text-light);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq__toggle::before {
+    width: 10px;
+    height: 2px;
+  }
+
+  .faq__toggle::after {
+    width: 2px;
+    height: 10px;
+  }
+
+  .faq__item[open] .faq__toggle {
+    background: var(--color-accent);
+    transform: rotate(45deg);
+  }
+
+  .faq__item[open] .faq__toggle::before,
+  .faq__item[open] .faq__toggle::after {
+    background: white;
+  }
+
+  .faq__answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+  }
+
+  .faq__answer p {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Sidebar */
+  .faq__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .faq__card {
+    padding: var(--space-xl);
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .faq__card-title {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .faq__card-title--light {
+    color: white;
+  }
+
+  .faq__card-text {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-lg);
+    line-height: 1.5;
+  }
+
+  .faq__card-text--light {
+    color: rgba(241, 250, 238, 0.85);
+  }
+
+  .faq__contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .faq__contact-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .faq__bullet {
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .faq__contact-list a {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  .faq__contact-list a:hover {
+    color: var(--color-accent);
+  }
+
+  /* Schedule */
+  .faq__schedule {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .faq__schedule-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+  }
+
+  .faq__schedule-row span {
+    color: var(--color-text-light);
+  }
+
+  .faq__schedule-row strong {
+    color: var(--color-primary);
+  }
+
+  /* CTA card */
+  .faq__card--cta {
+    background: var(--color-primary);
+    border-color: transparent;
+  }
+
+  .faq__cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    min-height: 44px;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .faq__cta-btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  @media (min-width: 640px) {
+    .faq__sidebar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .faq__question {
+      padding: var(--space-xl);
+    }
+
+    .faq__question-text {
+      font-size: var(--text-base);
+    }
+
+    .faq__answer {
+      padding: 0 var(--space-xl) var(--space-xl);
+    }
+  }
+
+  @media (min-width: 968px) {
+    .faq__grid {
+      grid-template-columns: 1fr 360px;
+      gap: var(--space-3xl);
+    }
+
+    .faq__sidebar {
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: var(--space-xl);
+    }
+  }
+</style>

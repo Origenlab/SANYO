@@ -1,0 +1,138 @@
+---
+interface Props {
+  badge?: string;
+  title: string;
+  highlight?: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+}
+
+const {
+  badge,
+  title,
+  highlight,
+  subtitle,
+  align = 'left',
+} = Astro.props;
+
+const hasSlot = Astro.slots.has('default');
+---
+
+<div class={`section-header section-header--${align}${hasSlot ? ' section-header--two-col' : ''}`}>
+  <div class="section-header__left">
+    {badge && <span class="section-header__badge">{badge}</span>}
+    <h2 class="section-header__title">
+      {title}{highlight && <> <span class="section-header__highlight">{highlight}</span></>}
+    </h2>
+    {subtitle && <p class="section-header__subtitle">{subtitle}</p>}
+  </div>
+  {hasSlot && (
+    <div class="section-header__right">
+      <slot />
+    </div>
+  )}
+</div>
+
+<style>
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-block-end: var(--space-3xl);
+  }
+
+  .section-header--center {
+    text-align: center;
+  }
+
+  .section-header--center .section-header__badge {
+    margin-inline: auto;
+  }
+
+  .section-header--center .section-header__subtitle {
+    margin-inline: auto;
+    max-width: 60ch;
+  }
+
+  .section-header__left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .section-header__badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+    padding: 0.25em 1em;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    width: fit-content;
+  }
+
+  .section-header__title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .section-header__highlight {
+    color: var(--color-accent);
+  }
+
+  .section-header__subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .section-header__right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .section-header__right :global(p) {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .section-header__right :global(strong) {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  @media (min-width: 640px) {
+    .section-header__title {
+      font-size: var(--text-3xl);
+    }
+
+    .section-header__subtitle {
+      font-size: var(--text-base);
+    }
+
+    .section-header__right :global(p) {
+      font-size: var(--text-base);
+    }
+  }
+
+  @media (min-width: 968px) {
+    .section-header--two-col {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .section-header__title {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

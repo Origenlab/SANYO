@@ -1,0 +1,192 @@
+---
+interface Props {
+  title?: string;
+  desc?: string;
+  btnText?: string;
+  btnHref?: string;
+  whatsapp?: boolean;
+  whatsappHref?: string;
+}
+
+const {
+  title = '¿Tu elevador necesita servicio?',
+  desc,
+  btnText = 'Cotizar ahora',
+  btnHref = '#cotizador',
+  whatsapp = true,
+  whatsappHref = 'https://wa.me/525500000000',
+} = Astro.props;
+---
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__content">
+      <div class="cta-banner__text">
+        <h2 class="cta-banner__title">{title}</h2>
+        {desc
+          ? <p class="cta-banner__desc">{desc}</p>
+          : <p class="cta-banner__desc">Diagnóstico gratuito · Respuesta en <strong>menos de 24 horas</strong> · Técnicos certificados en todo México</p>
+        }
+      </div>
+      <div class="cta-banner__actions">
+        <a href={btnHref} class="cta-banner__btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          {btnText}
+        </a>
+        {whatsapp && (
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="cta-banner__wa">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    padding-block: var(--space-3xl);
+    background: #0f1a2e;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(230, 57, 70, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(27, 42, 74, 0.5) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-banner__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xl);
+  }
+
+  .cta-banner__title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .cta-banner__desc {
+    font-size: var(--text-sm);
+    color: rgba(241, 250, 238, 0.85);
+    margin: var(--space-sm) 0 0;
+    line-height: 1.6;
+  }
+
+  .cta-banner__desc strong {
+    color: white;
+    font-weight: 700;
+  }
+
+  .cta-banner__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    width: 100%;
+  }
+
+  .cta-banner__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-2xl);
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+    font-size: var(--text-base);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    min-height: 52px;
+    width: 100%;
+  }
+
+  .cta-banner__btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(230, 57, 70, 0.5);
+  }
+
+  .cta-banner__wa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+    min-height: 48px;
+    width: 100%;
+  }
+
+  .cta-banner__wa:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  @media (min-width: 640px) {
+    .cta-banner__title {
+      font-size: var(--text-3xl);
+    }
+
+    .cta-banner__desc {
+      font-size: var(--text-base);
+    }
+
+    .cta-banner__actions {
+      flex-direction: row;
+      justify-content: center;
+      width: auto;
+    }
+
+    .cta-banner__btn,
+    .cta-banner__wa {
+      width: auto;
+    }
+  }
+
+  @media (min-width: 968px) {
+    .cta-banner {
+      padding-block: var(--space-4xl);
+    }
+
+    .cta-banner__content {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      gap: var(--space-3xl);
+    }
+
+    .cta-banner__text {
+      flex: 1;
+    }
+
+    .cta-banner__actions {
+      flex-shrink: 0;
+    }
+
+    .cta-banner__title {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

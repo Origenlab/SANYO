@@ -1,0 +1,131 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+
+const reasons = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    title: 'Servicio 24/7 los 365 días',
+    description: 'Atención inmediata en emergencias cualquier día del año, sin importar la hora. Técnicos de guardia disponibles en todo momento.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+    title: 'Servicio Multimarca',
+    description: 'Atendemos más de 50 marcas: Otis, Schindler, KONE, TK Elevator, Mitsubishi, Hitachi, Fujitec, Hyundai y muchas más.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: 'Técnicos Certificados',
+    description: 'Personal certificado bajo NOM-207 y NOM-053. Formación continua, herramienta especializada y protocolo de seguridad en cada intervención.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    title: 'Respuesta en menos de 2 h',
+    description: 'En Ciudad de México garantizamos presencia en tu instalación en menos de 2 horas. Flota de técnicos distribuida estratégicamente en la CDMX.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+    title: 'Más de 20 Años de Experiencia',
+    description: 'Dos décadas perfeccionando el servicio de transporte vertical en México. Conocimiento acumulado en los sistemas, fallas y soluciones más complejas.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+    title: 'Garantía por Escrito',
+    description: 'Todos nuestros trabajos incluyen garantía documentada. Respaldamos materiales, refacciones y mano de obra con certificado entregado al cliente.',
+  },
+];
+---
+
+<section class="why-choose" id="por-que-elegirnos">
+  <div class="container">
+    <SectionHeader
+      badge="Por qué elegirnos"
+      title="La elección más confiable en"
+      highlight="transporte vertical"
+      subtitle="Más de 500 empresas en México confían en Sanyo para mantener sus elevadores y escaleras en óptimas condiciones. Estas son las razones."
+      align="center"
+    />
+
+    <div class="why-choose__grid">
+      {reasons.map((reason) => (
+        <div class="why-choose__card">
+          <div class="why-choose__icon" set:html={reason.icon} />
+          <h3 class="why-choose__title">{reason.title}</h3>
+          <p class="why-choose__desc">{reason.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-choose {
+    padding-block: var(--space-4xl);
+    background: var(--color-bg-alt);
+  }
+
+  .why-choose__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .why-choose__card {
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-light);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .why-choose__card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .why-choose__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary);
+    color: var(--color-accent);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .why-choose__title {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .why-choose__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .why-choose__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 968px) {
+    .why-choose__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .why-choose__title {
+      font-size: var(--text-lg);
+    }
+  }
+</style>
