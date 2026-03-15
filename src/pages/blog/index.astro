@@ -62,7 +62,7 @@ const articles = [
           <a href={a.href} class="article-card">
             <div class="article-card__header">
               <span class="article-card__tag">{a.tag}</span>
-              <time class="article-card__date">{new Date(a.date).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              <!-- fecha eliminada: regla OrigenLab -->
             </div>
             <h2 class="article-card__title">{a.title}</h2>
             <p class="article-card__excerpt">{a.excerpt}</p>
